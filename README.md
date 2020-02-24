@@ -1,6 +1,8 @@
 # Garry's Mod Server Launcher GUI With Console Support
  This is meant to act as a replacement launcher for hosts who want to use the full console while also wanting to choose the map the server starts on, since the normal server GUI doesn't include that feature.
 
+![](reference.png "Main Window")
+
 ## Features:
 <ul>
     <li>Prompts the user to select the file path that contains the server exe if the path is not found.</li>
