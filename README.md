@@ -1,7 +1,7 @@
 # Garry's Mod Server Launcher GUI With Console Support
  This is meant to act as a replacement launcher for hosts who want to use the full console while also wanting to choose the map the server starts on, since the normal server GUI doesn't include that feature.
 
-![](reference.png "Main Window")
+![](https://raw.githubusercontent.com/LambdaGaming/GMod-Server-Launcher-Console/master/reference.PNG)
 
 ## Features:
 <ul>
