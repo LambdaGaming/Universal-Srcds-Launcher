@@ -162,7 +162,6 @@ namespace GMod_Server_Launcher_Console
 			OpenFileDialog browse = new OpenFileDialog();
 			browse.InitialDirectory = Properties.Settings.Default.FilePath;
 			browse.Filter = "Text file containing token|*.txt";
-			Debug.WriteLine( Properties.Settings.Default.FilePath );
 			if ( browse.ShowDialog() == DialogResult.OK )
 			{
 				Properties.Settings.Default.TokenPath = browse.FileName;
