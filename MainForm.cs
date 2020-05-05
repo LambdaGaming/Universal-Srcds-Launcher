@@ -8,20 +8,27 @@ namespace GMod_Server_Launcher_Console
 {
 	public partial class MainForm : Form
 	{
+		public string ConsoleEnabled = "";
+		public string LANEnabled = "";
+		public string Password = "";
+		public string SteamToken = "";
+
 		public MainForm()
 		{
 			InitializeComponent();
-			this.BringToFront();
-			this.Focus();
+			BringToFront();
+			Focus();
 
-			lancheck.Checked = Properties.Settings.Default.Lan;
-			consolecheck.Checked = Properties.Settings.Default.Console;
-			maxplayers.Value = Properties.Settings.Default.MaxPlayers;
-			gameselect.Text = Properties.Settings.Default.Gamemode;
-			gameselect.SelectedItem = Properties.Settings.Default.Gamemode;
-			mapselect.Text = Properties.Settings.Default.Map;
-			mapselect.SelectedItem = Properties.Settings.Default.Map;
-			passwordBox.Text = Properties.Settings.Default.Password;
+			var Settings = Properties.Settings.Default;
+			lancheck.Checked = Settings.Lan;
+			consolecheck.Checked = Settings.Console;
+			maxplayers.Value = Settings.MaxPlayers;
+			gameselect.Text = Settings.Gamemode;
+			gameselect.SelectedItem = Settings.Gamemode;
+			mapselect.Text = Settings.Map;
+			mapselect.SelectedItem = Settings.Map;
+			passwordBox.Text = Settings.Password;
+			TokenEnable.Checked = Settings.TokenEnabled;
 
 			mapselect.Enabled = consolecheck.Checked;
 			lancheck.Enabled = consolecheck.Checked;
@@ -33,7 +40,7 @@ namespace GMod_Server_Launcher_Console
 			path.Append( Properties.Settings.Default.FilePath );
 			label4.Text = path.ToString();
 
-			string[] listgamemodes = Directory.GetDirectories( Properties.Settings.Default.FilePath + @"\garrysmod\gamemodes" );
+			string[] listgamemodes = Directory.GetDirectories( Settings.FilePath + @"\garrysmod\gamemodes" );
 			foreach ( string gamemode in listgamemodes )
 			{
 				string foldername = Path.GetFileName( gamemode );
@@ -43,7 +50,7 @@ namespace GMod_Server_Launcher_Console
 				}
 			}
 
-			string[] listmaps = Directory.GetFiles( Properties.Settings.Default.FilePath + @"\garrysmod\maps" );
+			string[] listmaps = Directory.GetFiles( Settings.FilePath + @"\garrysmod\maps" );
 			foreach ( string map in listmaps )
 			{
 				string extension = Path.GetExtension( map );
@@ -55,13 +62,9 @@ namespace GMod_Server_Launcher_Console
 			}
 		}
 
-		public string ConsoleEnabled = "";
-		public string LANEnabled = "";
-		public string Password = "";
-
 		private void LanCheck( object sender, EventArgs e )
 		{
-			if( lancheck.Checked )
+			if ( lancheck.Checked )
 			{
 				LANEnabled = " +sv_lan 1 ";
 				Properties.Settings.Default.Lan = lancheck.Checked;
@@ -73,7 +76,7 @@ namespace GMod_Server_Launcher_Console
 
 		private void ConsoleCheck( object sender, EventArgs e )
 		{
-			if( consolecheck.Checked )
+			if ( consolecheck.Checked )
 			{
 				ConsoleEnabled = " -console ";
 			}
@@ -105,26 +108,66 @@ namespace GMod_Server_Launcher_Console
 			Properties.Settings.Default.Gamemode = gameselect.SelectedItem.ToString();
 		}
 
-		private void ChangePathClick(object sender, EventArgs e)
+		private void ChangePathClick( object sender, EventArgs e )
 		{
 			FolderBrowserDialog browse = new FolderBrowserDialog();
 			browse.Description = "Select server file path. (The folder containing the srcds.exe file.)";
-			if (browse.ShowDialog() == DialogResult.OK)
+			if ( browse.ShowDialog() == DialogResult.OK )
 			{
 				Properties.Settings.Default.FilePath = browse.SelectedPath;
 				label4.Text = "Current server file path: " + Properties.Settings.Default.FilePath;
 			}
 		}
 
-		private void PasswordChanged(object sender, EventArgs e)
+		private void PasswordChanged( object sender, EventArgs e )
 		{
 			Properties.Settings.Default.Password = passwordBox.Text;
-			if (string.IsNullOrWhiteSpace(passwordBox.Text))
+			if ( string.IsNullOrWhiteSpace( passwordBox.Text ) )
 			{
 				Password = "";
 				return;
 			}
 			Password = " +sv_password " + passwordBox.Text;
+		}
+
+		private void TokenEnableChanged( object sender, EventArgs e )
+		{
+			if ( TokenEnable.Checked )
+			{
+				try
+				{
+					string Token = File.ReadAllText( Properties.Settings.Default.TokenPath );
+					SteamToken = " +sv_setsteamaccount " + Token;
+					return;
+				}
+				catch
+				{
+					DialogResult error = MessageBox.Show( "Failed to find file path. Make sure you have selected one through the Browse for Token button.", "Path Not Found", MessageBoxButtons.OK, MessageBoxIcon.Error );
+					if ( error == DialogResult.OK )
+					{
+						TokenEnable.Checked = false;
+						return;
+					}
+				}
+			}
+			else
+			{
+				SteamToken = "";
+			}
+			Properties.Settings.Default.TokenEnabled = TokenEnable.Checked;
+		}
+
+		private void TokenFolderClick( object sender, EventArgs e )
+		{
+			OpenFileDialog browse = new OpenFileDialog();
+			browse.InitialDirectory = Properties.Settings.Default.FilePath;
+			browse.Filter = "Text file containing token|*.txt";
+			Debug.WriteLine( Properties.Settings.Default.FilePath );
+			if ( browse.ShowDialog() == DialogResult.OK )
+			{
+				Properties.Settings.Default.TokenPath = browse.FileName;
+				TokenEnable.Enabled = !string.IsNullOrEmpty( Properties.Settings.Default.TokenPath );
+			}
 		}
 
 		private void StartButtonClick( object sender, EventArgs e )
@@ -134,7 +177,7 @@ namespace GMod_Server_Launcher_Console
 				UseShellExecute = true,
 				WorkingDirectory = Properties.Settings.Default.FilePath,
 				FileName = Properties.Settings.Default.FilePath + @"\srcds.exe",
-				Arguments = "+gamemode " + gameselect.Text.ToString() + ConsoleEnabled + LANEnabled + "+map " + mapselect.Text.ToString() + " +maxplayers " + maxplayers.Value + " +r_hunkalloclightmaps 0" + Password,
+				Arguments = "+gamemode " + gameselect.Text.ToString() + ConsoleEnabled + LANEnabled + "+map " + mapselect.Text.ToString() + " +maxplayers " + maxplayers.Value + " +r_hunkalloclightmaps 0" + Password + SteamToken,
 			};
 
 			try
