@@ -21,4 +21,6 @@
 
 ## Extra Builds:
  I have a separate repository for the launchers that I personally use. These are not very customizable and the the configs are all hard-coded, but feel free to use them if you'd like. [Click here to go to the repository.](https://github.com/LambdaGaming/GMod-Server-Launcher-Console-Extra)
- 
+
+# Issues & Pull Requests
+ If you would like to contribute to this repository by creating an issue or pull request, please refer to the [contributing guidelines.](https://lambdagaming.github.io/contributing.html)
