@@ -138,15 +138,13 @@ namespace GMod_Server_Launcher_Console
 				{
 					string Token = File.ReadAllText( Properties.Settings.Default.TokenPath );
 					SteamToken = " +sv_setsteamaccount " + Token;
-					return;
 				}
 				catch
 				{
-					DialogResult error = MessageBox.Show( "Failed to find file path. Make sure you have selected one through the Browse for Token button.", "Path Not Found", MessageBoxButtons.OK, MessageBoxIcon.Error );
+					DialogResult error = MessageBox.Show( "Failed to find token directory. Make sure you have selected one through the Browse for Token button.", "Path Not Found", MessageBoxButtons.OK, MessageBoxIcon.Error );
 					if ( error == DialogResult.OK )
 					{
 						TokenEnable.Checked = false;
-						return;
 					}
 				}
 			}

@@ -42,6 +42,7 @@
 			this.label8 = new System.Windows.Forms.Label();
 			this.label9 = new System.Windows.Forms.Label();
 			this.label10 = new System.Windows.Forms.Label();
+			this.label11 = new System.Windows.Forms.Label();
 			((System.ComponentModel.ISupportInitialize)(this.maxplayers)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -195,7 +196,7 @@
 			// 
 			// passwordBox
 			// 
-			this.passwordBox.Location = new System.Drawing.Point(213, 166);
+			this.passwordBox.Location = new System.Drawing.Point(212, 166);
 			this.passwordBox.Name = "passwordBox";
 			this.passwordBox.Size = new System.Drawing.Size(100, 20);
 			this.passwordBox.TabIndex = 13;
@@ -216,7 +217,7 @@
 			// 
 			// TokenFolder
 			// 
-			this.TokenFolder.Location = new System.Drawing.Point(15, 136);
+			this.TokenFolder.Location = new System.Drawing.Point(12, 136);
 			this.TokenFolder.Name = "TokenFolder";
 			this.TokenFolder.Size = new System.Drawing.Size(101, 22);
 			this.TokenFolder.TabIndex = 15;
@@ -272,12 +273,21 @@
 			this.label10.Size = new System.Drawing.Size(150, 1);
 			this.label10.TabIndex = 21;
 			// 
+			// label11
+			// 
+			this.label11.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+			this.label11.Location = new System.Drawing.Point(194, 204);
+			this.label11.Name = "label11";
+			this.label11.Size = new System.Drawing.Size(150, 1);
+			this.label11.TabIndex = 22;
+			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 15F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.Black;
 			this.ClientSize = new System.Drawing.Size(357, 353);
+			this.Controls.Add(this.label11);
 			this.Controls.Add(this.label10);
 			this.Controls.Add(this.label9);
 			this.Controls.Add(this.label8);
@@ -333,6 +343,7 @@
 		private System.Windows.Forms.Label label8;
 		private System.Windows.Forms.Label label9;
 		private System.Windows.Forms.Label label10;
+		private System.Windows.Forms.Label label11;
 	}
 }
 

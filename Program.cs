@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Windows.Forms;
 
 namespace GMod_Server_Launcher_Console
@@ -10,10 +11,10 @@ namespace GMod_Server_Launcher_Console
 		{
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
-			if ( string.IsNullOrWhiteSpace( Properties.Settings.Default.FilePath ) )
+			if ( string.IsNullOrWhiteSpace( Properties.Settings.Default.FilePath ) || !Directory.Exists( Properties.Settings.Default.FilePath ) )
 			{
-				DialogResult BrowseCheck = MessageBox.Show( "Browse for server executable path?", "Server file path not found.", MessageBoxButtons.YesNo, MessageBoxIcon.Warning );
-				if ( BrowseCheck == DialogResult.Yes )
+				DialogResult BrowseCheck = MessageBox.Show( "Please select the server directory.", "Server file path not found.", MessageBoxButtons.OK, MessageBoxIcon.Warning );
+				if ( BrowseCheck == DialogResult.OK )
 				{
 					FolderBrowserDialog browse = new FolderBrowserDialog
 					{
