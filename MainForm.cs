@@ -12,6 +12,7 @@ namespace GMod_Server_Launcher_Console
 		public string LANEnabled = "";
 		public string Password = "";
 		public string SteamToken = "";
+		public string CollectionID = "";
 
 		public MainForm()
 		{
@@ -29,12 +30,14 @@ namespace GMod_Server_Launcher_Console
 			mapselect.SelectedItem = Settings.Map;
 			passwordBox.Text = Settings.Password;
 			TokenEnable.Checked = Settings.TokenEnabled;
+			CollectionIDBox.Text = Settings.CollectionID;
 
 			mapselect.Enabled = consolecheck.Checked;
 			lancheck.Enabled = consolecheck.Checked;
 			maxplayers.Enabled = consolecheck.Checked;
 			gameselect.Enabled = consolecheck.Checked;
 			passwordBox.Enabled = consolecheck.Checked;
+			CollectionIDBox.Enabled = consolecheck.Checked;
 
 			StringBuilder path = new StringBuilder( label4.Text );
 			path.Append( Properties.Settings.Default.FilePath );
@@ -90,6 +93,8 @@ namespace GMod_Server_Launcher_Console
 			lancheck.Enabled = consolecheck.Checked;
 			maxplayers.Enabled = consolecheck.Checked;
 			gameselect.Enabled = consolecheck.Checked;
+			passwordBox.Enabled = consolecheck.Checked;
+			CollectionIDBox.Enabled = consolecheck.Checked;
 			Properties.Settings.Default.Console = consolecheck.Checked;
 		}
 
@@ -100,12 +105,12 @@ namespace GMod_Server_Launcher_Console
 
 		private void MapChanged( object sender, EventArgs e )
 		{
-			Properties.Settings.Default.Map = mapselect.SelectedItem.ToString();
+			Properties.Settings.Default.Map = mapselect.Text;
 		}
 
 		private void GamemodeChanged( object sender, EventArgs e )
 		{
-			Properties.Settings.Default.Gamemode = gameselect.SelectedItem.ToString();
+			Properties.Settings.Default.Gamemode = gameselect.Text;
 		}
 
 		private void ChangePathClick( object sender, EventArgs e )
@@ -174,7 +179,7 @@ namespace GMod_Server_Launcher_Console
 				UseShellExecute = true,
 				WorkingDirectory = Properties.Settings.Default.FilePath,
 				FileName = Properties.Settings.Default.FilePath + @"\srcds.exe",
-				Arguments = "+gamemode " + gameselect.Text.ToString() + ConsoleEnabled + LANEnabled + "+map " + mapselect.Text.ToString() + " +maxplayers " + maxplayers.Value + " +r_hunkalloclightmaps 0" + Password + SteamToken,
+				Arguments = "+gamemode " + gameselect.Text.ToString() + ConsoleEnabled + LANEnabled + "+map " + mapselect.Text.ToString() + " +maxplayers " + maxplayers.Value + " +r_hunkalloclightmaps 0" + Password + SteamToken + CollectionID,
 			};
 
 			try
@@ -187,6 +192,17 @@ namespace GMod_Server_Launcher_Console
 				DialogResult launcherror = MessageBox.Show( "Failed to launch. Invalid file path.", "Launch Error", MessageBoxButtons.OK, MessageBoxIcon.Error );
 				if ( launcherror == DialogResult.OK ) Close();
 			}
+		}
+
+		private void CollectionIDBoxChanged( object sender, EventArgs e )
+		{
+			Properties.Settings.Default.CollectionID = CollectionIDBox.Text;
+			if ( string.IsNullOrWhiteSpace( CollectionIDBox.Text ) )
+			{
+				CollectionID = "";
+				return;
+			}
+			CollectionID = " +host_workshop_collection " + CollectionIDBox.Text;
 		}
 	}
 }

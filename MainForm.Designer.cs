@@ -43,6 +43,9 @@
 			this.label9 = new System.Windows.Forms.Label();
 			this.label10 = new System.Windows.Forms.Label();
 			this.label11 = new System.Windows.Forms.Label();
+			this.CollectionIDBox = new System.Windows.Forms.TextBox();
+			this.label12 = new System.Windows.Forms.Label();
+			this.label13 = new System.Windows.Forms.Label();
 			((System.ComponentModel.ISupportInitialize)(this.maxplayers)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -62,14 +65,15 @@
 			// 
 			// mapselect
 			// 
+			this.mapselect.AllowDrop = true;
 			this.mapselect.Enabled = false;
 			this.mapselect.Font = new System.Drawing.Font("Arial Narrow", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.mapselect.FormattingEnabled = true;
 			this.mapselect.Location = new System.Drawing.Point(213, 98);
 			this.mapselect.Name = "mapselect";
 			this.mapselect.Size = new System.Drawing.Size(132, 23);
 			this.mapselect.TabIndex = 2;
 			this.mapselect.SelectedIndexChanged += new System.EventHandler(this.MapChanged);
+			this.mapselect.TextChanged += new System.EventHandler(this.MapChanged);
 			// 
 			// label1
 			// 
@@ -89,7 +93,7 @@
 			this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
 			this.button1.Font = new System.Drawing.Font("Arial Narrow", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.button1.ForeColor = System.Drawing.Color.White;
-			this.button1.Location = new System.Drawing.Point(0, 289);
+			this.button1.Location = new System.Drawing.Point(0, 296);
 			this.button1.Name = "button1";
 			this.button1.Size = new System.Drawing.Size(357, 64);
 			this.button1.TabIndex = 4;
@@ -146,12 +150,13 @@
 			// 
 			// gameselect
 			// 
-			this.gameselect.FormattingEnabled = true;
+			this.gameselect.AllowDrop = true;
 			this.gameselect.Location = new System.Drawing.Point(213, 30);
 			this.gameselect.Name = "gameselect";
 			this.gameselect.Size = new System.Drawing.Size(121, 23);
 			this.gameselect.TabIndex = 8;
 			this.gameselect.SelectedIndexChanged += new System.EventHandler(this.GamemodeChanged);
+			this.gameselect.TextChanged += new System.EventHandler(this.GamemodeChanged);
 			// 
 			// label3
 			// 
@@ -168,7 +173,7 @@
 			// 
 			this.label4.AutoSize = true;
 			this.label4.ForeColor = System.Drawing.Color.White;
-			this.label4.Location = new System.Drawing.Point(12, 243);
+			this.label4.Location = new System.Drawing.Point(10, 275);
 			this.label4.Name = "label4";
 			this.label4.Size = new System.Drawing.Size(119, 15);
 			this.label4.TabIndex = 10;
@@ -176,7 +181,7 @@
 			// 
 			// button2
 			// 
-			this.button2.Location = new System.Drawing.Point(12, 261);
+			this.button2.Location = new System.Drawing.Point(12, 249);
 			this.button2.Name = "button2";
 			this.button2.Size = new System.Drawing.Size(75, 23);
 			this.button2.TabIndex = 11;
@@ -281,12 +286,41 @@
 			this.label11.Size = new System.Drawing.Size(150, 1);
 			this.label11.TabIndex = 22;
 			// 
+			// CollectionIDBox
+			// 
+			this.CollectionIDBox.Location = new System.Drawing.Point(212, 233);
+			this.CollectionIDBox.Name = "CollectionIDBox";
+			this.CollectionIDBox.Size = new System.Drawing.Size(100, 20);
+			this.CollectionIDBox.TabIndex = 24;
+			this.CollectionIDBox.TextChanged += new System.EventHandler(this.CollectionIDBoxChanged);
+			// 
+			// label12
+			// 
+			this.label12.AutoSize = true;
+			this.label12.ForeColor = System.Drawing.Color.White;
+			this.label12.Location = new System.Drawing.Point(215, 215);
+			this.label12.Name = "label12";
+			this.label12.Size = new System.Drawing.Size(120, 15);
+			this.label12.TabIndex = 23;
+			this.label12.Text = "Workshop Collection ID:";
+			// 
+			// label13
+			// 
+			this.label13.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+			this.label13.Location = new System.Drawing.Point(194, 263);
+			this.label13.Name = "label13";
+			this.label13.Size = new System.Drawing.Size(150, 1);
+			this.label13.TabIndex = 25;
+			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 15F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.Black;
-			this.ClientSize = new System.Drawing.Size(357, 353);
+			this.ClientSize = new System.Drawing.Size(357, 360);
+			this.Controls.Add(this.label13);
+			this.Controls.Add(this.CollectionIDBox);
+			this.Controls.Add(this.label12);
 			this.Controls.Add(this.label11);
 			this.Controls.Add(this.label10);
 			this.Controls.Add(this.label9);
@@ -344,6 +378,9 @@
 		private System.Windows.Forms.Label label9;
 		private System.Windows.Forms.Label label10;
 		private System.Windows.Forms.Label label11;
+		private System.Windows.Forms.TextBox CollectionIDBox;
+		private System.Windows.Forms.Label label12;
+		private System.Windows.Forms.Label label13;
 	}
 }
 
