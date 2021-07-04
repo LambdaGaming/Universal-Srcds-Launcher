@@ -53,11 +53,11 @@
 			// 
 			this.lancheck.AutoSize = true;
 			this.lancheck.Cursor = System.Windows.Forms.Cursors.Default;
-			this.lancheck.Font = new System.Drawing.Font("Arial Narrow", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lancheck.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lancheck.ForeColor = System.Drawing.Color.White;
-			this.lancheck.Location = new System.Drawing.Point(12, 62);
+			this.lancheck.Location = new System.Drawing.Point(12, 52);
 			this.lancheck.Name = "lancheck";
-			this.lancheck.Size = new System.Drawing.Size(78, 19);
+			this.lancheck.Size = new System.Drawing.Size(91, 17);
 			this.lancheck.TabIndex = 0;
 			this.lancheck.Text = "LAN Server";
 			this.lancheck.UseVisualStyleBackColor = true;
@@ -67,10 +67,10 @@
 			// 
 			this.mapselect.AllowDrop = true;
 			this.mapselect.Enabled = false;
-			this.mapselect.Font = new System.Drawing.Font("Arial Narrow", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.mapselect.Location = new System.Drawing.Point(213, 98);
+			this.mapselect.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.mapselect.Location = new System.Drawing.Point(212, 98);
 			this.mapselect.Name = "mapselect";
-			this.mapselect.Size = new System.Drawing.Size(132, 23);
+			this.mapselect.Size = new System.Drawing.Size(132, 21);
 			this.mapselect.TabIndex = 2;
 			this.mapselect.SelectedIndexChanged += new System.EventHandler(this.MapChanged);
 			this.mapselect.TextChanged += new System.EventHandler(this.MapChanged);
@@ -78,11 +78,11 @@
 			// label1
 			// 
 			this.label1.AutoSize = true;
-			this.label1.Font = new System.Drawing.Font("Arial Narrow", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.label1.ForeColor = System.Drawing.SystemColors.Control;
-			this.label1.Location = new System.Drawing.Point(215, 80);
+			this.label1.Location = new System.Drawing.Point(309, 80);
 			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(29, 15);
+			this.label1.Size = new System.Drawing.Size(35, 13);
 			this.label1.TabIndex = 3;
 			this.label1.Text = "Map:";
 			// 
@@ -91,9 +91,9 @@
 			this.button1.BackColor = System.Drawing.Color.DimGray;
 			this.button1.Dock = System.Windows.Forms.DockStyle.Bottom;
 			this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-			this.button1.Font = new System.Drawing.Font("Arial Narrow", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.button1.ForeColor = System.Drawing.Color.White;
-			this.button1.Location = new System.Drawing.Point(0, 296);
+			this.button1.Location = new System.Drawing.Point(0, 287);
 			this.button1.Name = "button1";
 			this.button1.Size = new System.Drawing.Size(357, 64);
 			this.button1.TabIndex = 4;
@@ -103,7 +103,7 @@
 			// 
 			// maxplayers
 			// 
-			this.maxplayers.Location = new System.Drawing.Point(13, 202);
+			this.maxplayers.Location = new System.Drawing.Point(13, 189);
 			this.maxplayers.Maximum = new decimal(new int[] {
             120,
             0,
@@ -127,22 +127,22 @@
 			// label2
 			// 
 			this.label2.AutoSize = true;
-			this.label2.Font = new System.Drawing.Font("Arial Narrow", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.label2.ForeColor = System.Drawing.SystemColors.Control;
-			this.label2.Location = new System.Drawing.Point(12, 184);
+			this.label2.Location = new System.Drawing.Point(12, 165);
 			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(64, 15);
+			this.label2.Size = new System.Drawing.Size(79, 13);
 			this.label2.TabIndex = 7;
 			this.label2.Text = "Max Players:";
 			// 
 			// consolecheck
 			// 
 			this.consolecheck.AutoSize = true;
-			this.consolecheck.Font = new System.Drawing.Font("Arial Narrow", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.consolecheck.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.consolecheck.ForeColor = System.Drawing.Color.White;
 			this.consolecheck.Location = new System.Drawing.Point(12, 12);
 			this.consolecheck.Name = "consolecheck";
-			this.consolecheck.Size = new System.Drawing.Size(98, 19);
+			this.consolecheck.Size = new System.Drawing.Size(114, 17);
 			this.consolecheck.TabIndex = 1;
 			this.consolecheck.Text = "Enable Console";
 			this.consolecheck.UseVisualStyleBackColor = true;
@@ -151,9 +151,9 @@
 			// gameselect
 			// 
 			this.gameselect.AllowDrop = true;
-			this.gameselect.Location = new System.Drawing.Point(213, 30);
+			this.gameselect.Location = new System.Drawing.Point(223, 30);
 			this.gameselect.Name = "gameselect";
-			this.gameselect.Size = new System.Drawing.Size(121, 23);
+			this.gameselect.Size = new System.Drawing.Size(121, 21);
 			this.gameselect.TabIndex = 8;
 			this.gameselect.SelectedIndexChanged += new System.EventHandler(this.GamemodeChanged);
 			this.gameselect.TextChanged += new System.EventHandler(this.GamemodeChanged);
@@ -161,11 +161,11 @@
 			// label3
 			// 
 			this.label3.AutoSize = true;
-			this.label3.Font = new System.Drawing.Font("Arial Narrow", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.label3.ForeColor = System.Drawing.SystemColors.Control;
-			this.label3.Location = new System.Drawing.Point(215, 12);
+			this.label3.Location = new System.Drawing.Point(271, 12);
 			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(62, 15);
+			this.label3.Size = new System.Drawing.Size(73, 13);
 			this.label3.TabIndex = 9;
 			this.label3.Text = "Gamemode:";
 			// 
@@ -173,15 +173,15 @@
 			// 
 			this.label4.AutoSize = true;
 			this.label4.ForeColor = System.Drawing.Color.White;
-			this.label4.Location = new System.Drawing.Point(10, 275);
+			this.label4.Location = new System.Drawing.Point(12, 266);
 			this.label4.Name = "label4";
-			this.label4.Size = new System.Drawing.Size(119, 15);
+			this.label4.Size = new System.Drawing.Size(145, 13);
 			this.label4.TabIndex = 10;
 			this.label4.Text = "Current server file path: ";
 			// 
 			// button2
 			// 
-			this.button2.Location = new System.Drawing.Point(12, 249);
+			this.button2.Location = new System.Drawing.Point(12, 232);
 			this.button2.Name = "button2";
 			this.button2.Size = new System.Drawing.Size(75, 23);
 			this.button2.TabIndex = 11;
@@ -193,15 +193,15 @@
 			// 
 			this.label5.AutoSize = true;
 			this.label5.ForeColor = System.Drawing.Color.White;
-			this.label5.Location = new System.Drawing.Point(215, 148);
+			this.label5.Location = new System.Drawing.Point(279, 148);
 			this.label5.Name = "label5";
-			this.label5.Size = new System.Drawing.Size(54, 15);
+			this.label5.Size = new System.Drawing.Size(65, 13);
 			this.label5.TabIndex = 12;
 			this.label5.Text = "Password:";
 			// 
 			// passwordBox
 			// 
-			this.passwordBox.Location = new System.Drawing.Point(212, 166);
+			this.passwordBox.Location = new System.Drawing.Point(244, 166);
 			this.passwordBox.Name = "passwordBox";
 			this.passwordBox.Size = new System.Drawing.Size(100, 20);
 			this.passwordBox.TabIndex = 13;
@@ -212,9 +212,9 @@
 			this.TokenEnable.AutoSize = true;
 			this.TokenEnable.BackColor = System.Drawing.Color.Black;
 			this.TokenEnable.ForeColor = System.Drawing.Color.White;
-			this.TokenEnable.Location = new System.Drawing.Point(12, 111);
+			this.TokenEnable.Location = new System.Drawing.Point(12, 92);
 			this.TokenEnable.Name = "TokenEnable";
-			this.TokenEnable.Size = new System.Drawing.Size(118, 19);
+			this.TokenEnable.Size = new System.Drawing.Size(144, 17);
 			this.TokenEnable.TabIndex = 14;
 			this.TokenEnable.Text = "Enable Steam Token";
 			this.TokenEnable.UseVisualStyleBackColor = false;
@@ -222,18 +222,18 @@
 			// 
 			// TokenFolder
 			// 
-			this.TokenFolder.Location = new System.Drawing.Point(12, 136);
+			this.TokenFolder.Location = new System.Drawing.Point(12, 120);
 			this.TokenFolder.Name = "TokenFolder";
-			this.TokenFolder.Size = new System.Drawing.Size(101, 22);
+			this.TokenFolder.Size = new System.Drawing.Size(75, 22);
 			this.TokenFolder.TabIndex = 15;
-			this.TokenFolder.Text = "Browse for Token";
+			this.TokenFolder.Text = "Browse";
 			this.TokenFolder.UseVisualStyleBackColor = true;
 			this.TokenFolder.Click += new System.EventHandler(this.TokenFolderClick);
 			// 
 			// line1
 			// 
 			this.line1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-			this.line1.Location = new System.Drawing.Point(10, 44);
+			this.line1.Location = new System.Drawing.Point(12, 40);
 			this.line1.Name = "line1";
 			this.line1.Size = new System.Drawing.Size(120, 1);
 			this.line1.TabIndex = 16;
@@ -241,7 +241,7 @@
 			// label6
 			// 
 			this.label6.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-			this.label6.Location = new System.Drawing.Point(11, 97);
+			this.label6.Location = new System.Drawing.Point(11, 80);
 			this.label6.Name = "label6";
 			this.label6.Size = new System.Drawing.Size(120, 1);
 			this.label6.TabIndex = 17;
@@ -249,7 +249,7 @@
 			// label7
 			// 
 			this.label7.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-			this.label7.Location = new System.Drawing.Point(13, 173);
+			this.label7.Location = new System.Drawing.Point(12, 153);
 			this.label7.Name = "label7";
 			this.label7.Size = new System.Drawing.Size(120, 1);
 			this.label7.TabIndex = 18;
@@ -257,7 +257,7 @@
 			// label8
 			// 
 			this.label8.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-			this.label8.Location = new System.Drawing.Point(14, 235);
+			this.label8.Location = new System.Drawing.Point(12, 220);
 			this.label8.Name = "label8";
 			this.label8.Size = new System.Drawing.Size(120, 1);
 			this.label8.TabIndex = 19;
@@ -288,7 +288,7 @@
 			// 
 			// CollectionIDBox
 			// 
-			this.CollectionIDBox.Location = new System.Drawing.Point(212, 233);
+			this.CollectionIDBox.Location = new System.Drawing.Point(244, 233);
 			this.CollectionIDBox.Name = "CollectionIDBox";
 			this.CollectionIDBox.Size = new System.Drawing.Size(100, 20);
 			this.CollectionIDBox.TabIndex = 24;
@@ -298,9 +298,9 @@
 			// 
 			this.label12.AutoSize = true;
 			this.label12.ForeColor = System.Drawing.Color.White;
-			this.label12.Location = new System.Drawing.Point(215, 215);
+			this.label12.Location = new System.Drawing.Point(199, 215);
 			this.label12.Name = "label12";
-			this.label12.Size = new System.Drawing.Size(120, 15);
+			this.label12.Size = new System.Drawing.Size(145, 13);
 			this.label12.TabIndex = 23;
 			this.label12.Text = "Workshop Collection ID:";
 			// 
@@ -314,10 +314,10 @@
 			// 
 			// MainForm
 			// 
-			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 15F);
+			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.Black;
-			this.ClientSize = new System.Drawing.Size(357, 360);
+			this.ClientSize = new System.Drawing.Size(357, 351);
 			this.Controls.Add(this.label13);
 			this.Controls.Add(this.CollectionIDBox);
 			this.Controls.Add(this.label12);
@@ -343,7 +343,7 @@
 			this.Controls.Add(this.mapselect);
 			this.Controls.Add(this.lancheck);
 			this.Controls.Add(this.consolecheck);
-			this.Font = new System.Drawing.Font("Arial Narrow", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.Name = "MainForm";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -383,4 +383,3 @@
 		private System.Windows.Forms.Label label13;
 	}
 }
-
