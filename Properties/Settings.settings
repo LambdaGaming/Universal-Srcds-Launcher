@@ -17,7 +17,7 @@
     <Setting Name="Gamemode" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="FilePath" Type="System.String" Scope="User">
+    <Setting Name="FileName" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="Password" Type="System.String" Scope="User">
@@ -30,6 +30,9 @@
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="CollectionID" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="FilePath" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
   </Settings>

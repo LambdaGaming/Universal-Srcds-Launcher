@@ -11,18 +11,18 @@ namespace GMod_Server_Launcher_Console
 		{
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
-			if ( string.IsNullOrWhiteSpace( Properties.Settings.Default.FilePath ) || !Directory.Exists( Properties.Settings.Default.FilePath ) )
+			if ( string.IsNullOrWhiteSpace( Properties.Settings.Default.FileName ) || !Directory.Exists( Properties.Settings.Default.FileName ) )
 			{
-				DialogResult BrowseCheck = MessageBox.Show( "Please select the server directory.", "Server file path not found.", MessageBoxButtons.OK, MessageBoxIcon.Warning );
+				DialogResult BrowseCheck = MessageBox.Show( "Please select the server file.", "Server file path not found.", MessageBoxButtons.OK, MessageBoxIcon.Warning );
 				if ( BrowseCheck == DialogResult.OK )
 				{
-					FolderBrowserDialog browse = new FolderBrowserDialog
-					{
-						Description = "Select server file path. (The folder containing the srcds.exe file.)"
-					};
+					OpenFileDialog browse = new OpenFileDialog();
+					browse.Filter = "Server Executable (*.exe)|*.exe";
+					browse.RestoreDirectory = true;
 					if ( browse.ShowDialog() == DialogResult.OK )
 					{
-						Properties.Settings.Default.FilePath = browse.SelectedPath;
+						Properties.Settings.Default.FileName = browse.FileName;
+						Properties.Settings.Default.FilePath = Path.GetDirectoryName( browse.FileName );
 					}
 				}
 				else return;

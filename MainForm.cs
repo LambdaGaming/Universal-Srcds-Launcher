@@ -40,7 +40,7 @@ namespace GMod_Server_Launcher_Console
 			CollectionIDBox.Enabled = consolecheck.Checked;
 
 			StringBuilder path = new StringBuilder( label4.Text );
-			path.Append( Properties.Settings.Default.FilePath );
+			path.Append( Properties.Settings.Default.FileName );
 			label4.Text = path.ToString();
 
 			string[] listgamemodes = Directory.GetDirectories( Settings.FilePath + @"\garrysmod\gamemodes" );
@@ -115,12 +115,14 @@ namespace GMod_Server_Launcher_Console
 
 		private void ChangePathClick( object sender, EventArgs e )
 		{
-			FolderBrowserDialog browse = new FolderBrowserDialog();
-			browse.Description = "Select server file path. (The folder containing the srcds.exe file.)";
+			OpenFileDialog browse = new OpenFileDialog();
+			browse.Filter = "Server Executable (*.exe)|*.exe";
+			browse.RestoreDirectory = true;
 			if ( browse.ShowDialog() == DialogResult.OK )
 			{
-				Properties.Settings.Default.FilePath = browse.SelectedPath;
-				label4.Text = "Current server file path: " + Properties.Settings.Default.FilePath;
+				Properties.Settings.Default.FileName = browse.FileName;
+				Properties.Settings.Default.FilePath = Path.GetDirectoryName( browse.FileName );
+				label4.Text = "Current server file path: " + Properties.Settings.Default.FileName;
 			}
 		}
 
@@ -178,7 +180,7 @@ namespace GMod_Server_Launcher_Console
 			{
 				UseShellExecute = true,
 				WorkingDirectory = Properties.Settings.Default.FilePath,
-				FileName = Properties.Settings.Default.FilePath + @"\srcds.exe",
+				FileName = Properties.Settings.Default.FileName,
 				Arguments = "+gamemode " + gameselect.Text.ToString() + ConsoleEnabled + LANEnabled + "+map " + mapselect.Text.ToString() + " +maxplayers " + maxplayers.Value + " +r_hunkalloclightmaps 0" + Password + SteamToken + CollectionID,
 			};
 
