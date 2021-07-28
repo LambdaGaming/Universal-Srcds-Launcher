@@ -11,7 +11,7 @@ namespace GMod_Server_Launcher_Console
 		{
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
-			if ( string.IsNullOrWhiteSpace( Properties.Settings.Default.FileName ) || !Directory.Exists( Properties.Settings.Default.FileName ) )
+			if ( string.IsNullOrWhiteSpace( Properties.Settings.Default.FileName ) || !File.Exists( Properties.Settings.Default.FileName ) )
 			{
 				DialogResult BrowseCheck = MessageBox.Show( "Please select the server file.", "Server file path not found.", MessageBoxButtons.OK, MessageBoxIcon.Warning );
 				if ( BrowseCheck == DialogResult.OK )
