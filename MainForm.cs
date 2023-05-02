@@ -141,12 +141,7 @@ namespace GMod_Server_Launcher_Console
 		{
 			if ( TokenEnable.Checked )
 			{
-				try
-				{
-					string Token = File.ReadAllText( Properties.Settings.Default.TokenPath );
-					SteamToken = " +sv_setsteamaccount " + Token;
-				}
-				catch
+				if ( !File.Exists( Properties.Settings.Default.TokenPath ) )
 				{
 					OpenFileDialog browse = new OpenFileDialog();
 					browse.InitialDirectory = Properties.Settings.Default.FilePath;
@@ -157,6 +152,8 @@ namespace GMod_Server_Launcher_Console
 						TokenEnable.Checked = !string.IsNullOrEmpty( Properties.Settings.Default.TokenPath );
 					}
 				}
+				string Token = File.ReadAllText( Properties.Settings.Default.TokenPath );
+				SteamToken = " +sv_setsteamaccount " + Token;
 			}
 			else
 			{
