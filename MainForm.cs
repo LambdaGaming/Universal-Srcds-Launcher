@@ -13,6 +13,7 @@ namespace GMod_Server_Launcher_Console
 		public string Password = "";
 		public string SteamToken = "";
 		public string CollectionID = "";
+		public string LaunchParams = "";
 
 		public MainForm()
 		{
@@ -31,6 +32,7 @@ namespace GMod_Server_Launcher_Console
 			passwordBox.Text = Settings.Password;
 			TokenEnable.Checked = Settings.TokenEnabled;
 			CollectionIDBox.Text = Settings.CollectionID;
+			launchParameters.Text = Settings.LaunchParams;
 
 			mapselect.Enabled = consolecheck.Checked;
 			lancheck.Enabled = consolecheck.Checked;
@@ -137,6 +139,28 @@ namespace GMod_Server_Launcher_Console
 			Password = " +sv_password " + passwordBox.Text;
 		}
 
+		private void CollectionIDBoxChanged( object sender, EventArgs e )
+		{
+			Properties.Settings.Default.CollectionID = CollectionIDBox.Text;
+			if ( string.IsNullOrWhiteSpace( CollectionIDBox.Text ) )
+			{
+				CollectionID = "";
+				return;
+			}
+			CollectionID = " +host_workshop_collection " + CollectionIDBox.Text;
+		}
+
+		private void LaunchParamsChanged( object sender, EventArgs e )
+		{
+			Properties.Settings.Default.LaunchParams = launchParameters.Text;
+			if ( string.IsNullOrWhiteSpace( launchParameters.Text ) )
+			{
+				LaunchParams = "";
+				return;
+			}
+			LaunchParams = launchParameters.Text;
+		}
+
 		private void TokenEnableChanged( object sender, EventArgs e )
 		{
 			if ( TokenEnable.Checked )
@@ -169,7 +193,7 @@ namespace GMod_Server_Launcher_Console
 				UseShellExecute = true,
 				WorkingDirectory = Properties.Settings.Default.FilePath,
 				FileName = Properties.Settings.Default.FileName,
-				Arguments = "+gamemode " + gameselect.Text.ToString() + ConsoleEnabled + LANEnabled + "+map " + mapselect.Text.ToString() + " +maxplayers " + maxplayers.Value + " +r_hunkalloclightmaps 0" + Password + SteamToken + CollectionID,
+				Arguments = $"+gamemode {gameselect.Text} {ConsoleEnabled} {LANEnabled} +map {mapselect.Text} +maxplayers {maxplayers.Value} +r_hunkalloclightmaps 0 {Password} {SteamToken} {CollectionID} {LaunchParams}"
 			};
 
 			try
@@ -182,17 +206,6 @@ namespace GMod_Server_Launcher_Console
 				DialogResult launcherror = MessageBox.Show( "Failed to launch. Invalid file path.", "Launch Error", MessageBoxButtons.OK, MessageBoxIcon.Error );
 				if ( launcherror == DialogResult.OK ) Close();
 			}
-		}
-
-		private void CollectionIDBoxChanged( object sender, EventArgs e )
-		{
-			Properties.Settings.Default.CollectionID = CollectionIDBox.Text;
-			if ( string.IsNullOrWhiteSpace( CollectionIDBox.Text ) )
-			{
-				CollectionID = "";
-				return;
-			}
-			CollectionID = " +host_workshop_collection " + CollectionIDBox.Text;
 		}
 	}
 }

@@ -45,6 +45,9 @@
 			this.CollectionIDBox = new System.Windows.Forms.TextBox();
 			this.label12 = new System.Windows.Forms.Label();
 			this.label13 = new System.Windows.Forms.Label();
+			this.launchParameters = new System.Windows.Forms.TextBox();
+			this.label14 = new System.Windows.Forms.Label();
+			this.label15 = new System.Windows.Forms.Label();
 			((System.ComponentModel.ISupportInitialize)(this.maxplayers)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -92,7 +95,7 @@
 			this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
 			this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.button1.ForeColor = System.Drawing.Color.White;
-			this.button1.Location = new System.Drawing.Point(0, 287);
+			this.button1.Location = new System.Drawing.Point(0, 313);
 			this.button1.Name = "button1";
 			this.button1.Size = new System.Drawing.Size(357, 64);
 			this.button1.TabIndex = 4;
@@ -102,7 +105,7 @@
 			// 
 			// maxplayers
 			// 
-			this.maxplayers.Location = new System.Drawing.Point(13, 189);
+			this.maxplayers.Location = new System.Drawing.Point(11, 157);
 			this.maxplayers.Maximum = new decimal(new int[] {
             120,
             0,
@@ -128,7 +131,7 @@
 			this.label2.AutoSize = true;
 			this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.label2.ForeColor = System.Drawing.SystemColors.Control;
-			this.label2.Location = new System.Drawing.Point(12, 165);
+			this.label2.Location = new System.Drawing.Point(10, 133);
 			this.label2.Name = "label2";
 			this.label2.Size = new System.Drawing.Size(79, 13);
 			this.label2.TabIndex = 7;
@@ -172,19 +175,19 @@
 			// 
 			this.label4.AutoSize = true;
 			this.label4.ForeColor = System.Drawing.Color.White;
-			this.label4.Location = new System.Drawing.Point(12, 266);
+			this.label4.Location = new System.Drawing.Point(10, 297);
 			this.label4.Name = "label4";
-			this.label4.Size = new System.Drawing.Size(145, 13);
+			this.label4.Size = new System.Drawing.Size(85, 13);
 			this.label4.TabIndex = 10;
-			this.label4.Text = "Current server file path: ";
+			this.label4.Text = "Current path: ";
 			// 
 			// button2
 			// 
-			this.button2.Location = new System.Drawing.Point(12, 232);
+			this.button2.Location = new System.Drawing.Point(11, 271);
 			this.button2.Name = "button2";
-			this.button2.Size = new System.Drawing.Size(75, 23);
+			this.button2.Size = new System.Drawing.Size(119, 23);
 			this.button2.TabIndex = 11;
-			this.button2.Text = "Change Path";
+			this.button2.Text = "Change Exe Path";
 			this.button2.UseVisualStyleBackColor = true;
 			this.button2.Click += new System.EventHandler(this.ChangePathClick);
 			// 
@@ -209,7 +212,7 @@
 			// TokenEnable
 			// 
 			this.TokenEnable.AutoSize = true;
-			this.TokenEnable.BackColor = System.Drawing.Color.Black;
+			this.TokenEnable.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
 			this.TokenEnable.ForeColor = System.Drawing.Color.White;
 			this.TokenEnable.Location = new System.Drawing.Point(12, 92);
 			this.TokenEnable.Name = "TokenEnable";
@@ -238,7 +241,7 @@
 			// label7
 			// 
 			this.label7.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-			this.label7.Location = new System.Drawing.Point(12, 153);
+			this.label7.Location = new System.Drawing.Point(12, 118);
 			this.label7.Name = "label7";
 			this.label7.Size = new System.Drawing.Size(120, 1);
 			this.label7.TabIndex = 18;
@@ -246,7 +249,7 @@
 			// label8
 			// 
 			this.label8.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-			this.label8.Location = new System.Drawing.Point(12, 220);
+			this.label8.Location = new System.Drawing.Point(12, 192);
 			this.label8.Name = "label8";
 			this.label8.Size = new System.Drawing.Size(120, 1);
 			this.label8.TabIndex = 19;
@@ -301,12 +304,41 @@
 			this.label13.Size = new System.Drawing.Size(150, 1);
 			this.label13.TabIndex = 25;
 			// 
+			// launchParameters
+			// 
+			this.launchParameters.Location = new System.Drawing.Point(11, 221);
+			this.launchParameters.Name = "launchParameters";
+			this.launchParameters.Size = new System.Drawing.Size(119, 20);
+			this.launchParameters.TabIndex = 27;
+			this.launchParameters.TextChanged += new System.EventHandler(this.LaunchParamsChanged);
+			// 
+			// label14
+			// 
+			this.label14.AutoSize = true;
+			this.label14.ForeColor = System.Drawing.Color.White;
+			this.label14.Location = new System.Drawing.Point(8, 204);
+			this.label14.Name = "label14";
+			this.label14.Size = new System.Drawing.Size(120, 13);
+			this.label14.TabIndex = 26;
+			this.label14.Text = "Launch Parameters:";
+			// 
+			// label15
+			// 
+			this.label15.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+			this.label15.Location = new System.Drawing.Point(13, 256);
+			this.label15.Name = "label15";
+			this.label15.Size = new System.Drawing.Size(120, 1);
+			this.label15.TabIndex = 28;
+			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.BackColor = System.Drawing.Color.Black;
-			this.ClientSize = new System.Drawing.Size(357, 351);
+			this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
+			this.ClientSize = new System.Drawing.Size(357, 377);
+			this.Controls.Add(this.label15);
+			this.Controls.Add(this.launchParameters);
+			this.Controls.Add(this.label14);
 			this.Controls.Add(this.label13);
 			this.Controls.Add(this.CollectionIDBox);
 			this.Controls.Add(this.label12);
@@ -368,5 +400,8 @@
 		private System.Windows.Forms.TextBox CollectionIDBox;
 		private System.Windows.Forms.Label label12;
 		private System.Windows.Forms.Label label13;
+		private System.Windows.Forms.TextBox launchParameters;
+		private System.Windows.Forms.Label label14;
+		private System.Windows.Forms.Label label15;
 	}
 }

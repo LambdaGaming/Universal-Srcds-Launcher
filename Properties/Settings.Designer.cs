@@ -154,5 +154,17 @@ namespace GMod_Server_Launcher_Console.Properties {
                 this["FilePath"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string LaunchParams {
+            get {
+                return ((string)(this["LaunchParams"]));
+            }
+            set {
+                this["LaunchParams"] = value;
+            }
+        }
     }
 }
