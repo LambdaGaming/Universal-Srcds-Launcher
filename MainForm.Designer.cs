@@ -70,9 +70,9 @@
 			this.mapselect.AllowDrop = true;
 			this.mapselect.Enabled = false;
 			this.mapselect.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.mapselect.Location = new System.Drawing.Point(212, 98);
+			this.mapselect.Location = new System.Drawing.Point(223, 98);
 			this.mapselect.Name = "mapselect";
-			this.mapselect.Size = new System.Drawing.Size(132, 21);
+			this.mapselect.Size = new System.Drawing.Size(121, 21);
 			this.mapselect.TabIndex = 2;
 			this.mapselect.SelectedIndexChanged += new System.EventHandler(this.MapChanged);
 			this.mapselect.TextChanged += new System.EventHandler(this.MapChanged);
@@ -203,9 +203,9 @@
 			// 
 			// passwordBox
 			// 
-			this.passwordBox.Location = new System.Drawing.Point(244, 166);
+			this.passwordBox.Location = new System.Drawing.Point(223, 166);
 			this.passwordBox.Name = "passwordBox";
-			this.passwordBox.Size = new System.Drawing.Size(100, 20);
+			this.passwordBox.Size = new System.Drawing.Size(121, 20);
 			this.passwordBox.TabIndex = 13;
 			this.passwordBox.TextChanged += new System.EventHandler(this.PasswordChanged);
 			// 
@@ -280,9 +280,9 @@
 			// 
 			// CollectionIDBox
 			// 
-			this.CollectionIDBox.Location = new System.Drawing.Point(244, 233);
+			this.CollectionIDBox.Location = new System.Drawing.Point(223, 233);
 			this.CollectionIDBox.Name = "CollectionIDBox";
-			this.CollectionIDBox.Size = new System.Drawing.Size(100, 20);
+			this.CollectionIDBox.Size = new System.Drawing.Size(121, 20);
 			this.CollectionIDBox.TabIndex = 24;
 			this.CollectionIDBox.TextChanged += new System.EventHandler(this.CollectionIDBoxChanged);
 			// 
