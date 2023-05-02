@@ -148,10 +148,13 @@ namespace GMod_Server_Launcher_Console
 				}
 				catch
 				{
-					DialogResult error = MessageBox.Show( "Failed to find token directory. Make sure you have selected one through the Browse for Token button.", "Path Not Found", MessageBoxButtons.OK, MessageBoxIcon.Error );
-					if ( error == DialogResult.OK )
+					OpenFileDialog browse = new OpenFileDialog();
+					browse.InitialDirectory = Properties.Settings.Default.FilePath;
+					browse.Filter = "Text file containing token|*.txt";
+					if ( browse.ShowDialog() == DialogResult.OK )
 					{
-						TokenEnable.Checked = false;
+						Properties.Settings.Default.TokenPath = browse.FileName;
+						TokenEnable.Checked = !string.IsNullOrEmpty( Properties.Settings.Default.TokenPath );
 					}
 				}
 			}
@@ -160,18 +163,6 @@ namespace GMod_Server_Launcher_Console
 				SteamToken = "";
 			}
 			Properties.Settings.Default.TokenEnabled = TokenEnable.Checked;
-		}
-
-		private void TokenFolderClick( object sender, EventArgs e )
-		{
-			OpenFileDialog browse = new OpenFileDialog();
-			browse.InitialDirectory = Properties.Settings.Default.FilePath;
-			browse.Filter = "Text file containing token|*.txt";
-			if ( browse.ShowDialog() == DialogResult.OK )
-			{
-				Properties.Settings.Default.TokenPath = browse.FileName;
-				TokenEnable.Enabled = !string.IsNullOrEmpty( Properties.Settings.Default.TokenPath );
-			}
 		}
 
 		private void StartButtonClick( object sender, EventArgs e )

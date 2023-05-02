@@ -35,7 +35,6 @@
 			this.label5 = new System.Windows.Forms.Label();
 			this.passwordBox = new System.Windows.Forms.TextBox();
 			this.TokenEnable = new System.Windows.Forms.CheckBox();
-			this.TokenFolder = new System.Windows.Forms.Button();
 			this.line1 = new System.Windows.Forms.Label();
 			this.label6 = new System.Windows.Forms.Label();
 			this.label7 = new System.Windows.Forms.Label();
@@ -220,16 +219,6 @@
 			this.TokenEnable.UseVisualStyleBackColor = false;
 			this.TokenEnable.CheckedChanged += new System.EventHandler(this.TokenEnableChanged);
 			// 
-			// TokenFolder
-			// 
-			this.TokenFolder.Location = new System.Drawing.Point(12, 120);
-			this.TokenFolder.Name = "TokenFolder";
-			this.TokenFolder.Size = new System.Drawing.Size(75, 22);
-			this.TokenFolder.TabIndex = 15;
-			this.TokenFolder.Text = "Browse";
-			this.TokenFolder.UseVisualStyleBackColor = true;
-			this.TokenFolder.Click += new System.EventHandler(this.TokenFolderClick);
-			// 
 			// line1
 			// 
 			this.line1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
@@ -328,7 +317,6 @@
 			this.Controls.Add(this.label7);
 			this.Controls.Add(this.label6);
 			this.Controls.Add(this.line1);
-			this.Controls.Add(this.TokenFolder);
 			this.Controls.Add(this.TokenEnable);
 			this.Controls.Add(this.passwordBox);
 			this.Controls.Add(this.label5);
@@ -370,7 +358,6 @@
 		private System.Windows.Forms.Label label5;
 		private System.Windows.Forms.TextBox passwordBox;
 		private System.Windows.Forms.CheckBox TokenEnable;
-		private System.Windows.Forms.Button TokenFolder;
 		private System.Windows.Forms.Label line1;
 		private System.Windows.Forms.Label label6;
 		private System.Windows.Forms.Label label7;
