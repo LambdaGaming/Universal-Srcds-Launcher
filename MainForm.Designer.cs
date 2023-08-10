@@ -26,11 +26,11 @@
 			this.button1 = new System.Windows.Forms.Button();
 			this.maxplayers = new System.Windows.Forms.NumericUpDown();
 			this.label2 = new System.Windows.Forms.Label();
-			this.consolecheck = new System.Windows.Forms.CheckBox();
+			this.legacyCheck = new System.Windows.Forms.CheckBox();
 			this.gameselect = new System.Windows.Forms.ComboBox();
 			this.label3 = new System.Windows.Forms.Label();
-			this.label4 = new System.Windows.Forms.Label();
-			this.button2 = new System.Windows.Forms.Button();
+			this.exePathLabel = new System.Windows.Forms.Label();
+			this.exePathButton = new System.Windows.Forms.Button();
 			this.label5 = new System.Windows.Forms.Label();
 			this.passwordBox = new System.Windows.Forms.TextBox();
 			this.TokenEnable = new System.Windows.Forms.CheckBox();
@@ -47,6 +47,8 @@
 			this.launchParameters = new System.Windows.Forms.TextBox();
 			this.label14 = new System.Windows.Forms.Label();
 			this.label15 = new System.Windows.Forms.Label();
+			this.gamePathButton = new System.Windows.Forms.Button();
+			this.gamePathLabel = new System.Windows.Forms.Label();
 			((System.ComponentModel.ISupportInitialize)(this.maxplayers)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -94,7 +96,7 @@
 			this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
 			this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.button1.ForeColor = System.Drawing.Color.White;
-			this.button1.Location = new System.Drawing.Point(0, 313);
+			this.button1.Location = new System.Drawing.Point(0, 325);
 			this.button1.Name = "button1";
 			this.button1.Size = new System.Drawing.Size(357, 64);
 			this.button1.TabIndex = 4;
@@ -136,18 +138,18 @@
 			this.label2.TabIndex = 7;
 			this.label2.Text = "Max Players:";
 			// 
-			// consolecheck
+			// legacyCheck
 			// 
-			this.consolecheck.AutoSize = true;
-			this.consolecheck.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.consolecheck.ForeColor = System.Drawing.Color.White;
-			this.consolecheck.Location = new System.Drawing.Point(12, 12);
-			this.consolecheck.Name = "consolecheck";
-			this.consolecheck.Size = new System.Drawing.Size(150, 17);
-			this.consolecheck.TabIndex = 1;
-			this.consolecheck.Text = "Use Legacy Launcher";
-			this.consolecheck.UseVisualStyleBackColor = true;
-			this.consolecheck.CheckedChanged += new System.EventHandler(this.ConsoleCheck);
+			this.legacyCheck.AutoSize = true;
+			this.legacyCheck.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.legacyCheck.ForeColor = System.Drawing.Color.White;
+			this.legacyCheck.Location = new System.Drawing.Point(12, 12);
+			this.legacyCheck.Name = "legacyCheck";
+			this.legacyCheck.Size = new System.Drawing.Size(150, 17);
+			this.legacyCheck.TabIndex = 1;
+			this.legacyCheck.Text = "Use Legacy Launcher";
+			this.legacyCheck.UseVisualStyleBackColor = true;
+			this.legacyCheck.CheckedChanged += new System.EventHandler(this.LegacyCheck);
 			// 
 			// gameselect
 			// 
@@ -164,31 +166,31 @@
 			this.label3.AutoSize = true;
 			this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.label3.ForeColor = System.Drawing.SystemColors.Control;
-			this.label3.Location = new System.Drawing.Point(271, 12);
+			this.label3.Location = new System.Drawing.Point(233, 14);
 			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(73, 13);
+			this.label3.Size = new System.Drawing.Size(111, 13);
 			this.label3.TabIndex = 9;
-			this.label3.Text = "Gamemode:";
+			this.label3.Text = "Game/Gamemode:";
 			// 
-			// label4
+			// exePathLabel
 			// 
-			this.label4.AutoSize = true;
-			this.label4.ForeColor = System.Drawing.Color.White;
-			this.label4.Location = new System.Drawing.Point(10, 297);
-			this.label4.Name = "label4";
-			this.label4.Size = new System.Drawing.Size(85, 13);
-			this.label4.TabIndex = 10;
-			this.label4.Text = "Current path: ";
+			this.exePathLabel.AutoSize = true;
+			this.exePathLabel.ForeColor = System.Drawing.Color.White;
+			this.exePathLabel.Location = new System.Drawing.Point(10, 297);
+			this.exePathLabel.Name = "exePathLabel";
+			this.exePathLabel.Size = new System.Drawing.Size(65, 13);
+			this.exePathLabel.TabIndex = 10;
+			this.exePathLabel.Text = "Exe path: ";
 			// 
-			// button2
+			// exePathButton
 			// 
-			this.button2.Location = new System.Drawing.Point(11, 271);
-			this.button2.Name = "button2";
-			this.button2.Size = new System.Drawing.Size(119, 23);
-			this.button2.TabIndex = 11;
-			this.button2.Text = "Change Exe Path";
-			this.button2.UseVisualStyleBackColor = true;
-			this.button2.Click += new System.EventHandler(this.ChangePathClick);
+			this.exePathButton.Location = new System.Drawing.Point(11, 271);
+			this.exePathButton.Name = "exePathButton";
+			this.exePathButton.Size = new System.Drawing.Size(119, 23);
+			this.exePathButton.TabIndex = 11;
+			this.exePathButton.Text = "Change Exe Path";
+			this.exePathButton.UseVisualStyleBackColor = true;
+			this.exePathButton.Click += new System.EventHandler(this.ChangeExePathClick);
 			// 
 			// label5
 			// 
@@ -329,12 +331,34 @@
 			this.label15.Size = new System.Drawing.Size(120, 1);
 			this.label15.TabIndex = 28;
 			// 
+			// gamePathButton
+			// 
+			this.gamePathButton.Location = new System.Drawing.Point(216, 271);
+			this.gamePathButton.Name = "gamePathButton";
+			this.gamePathButton.Size = new System.Drawing.Size(129, 23);
+			this.gamePathButton.TabIndex = 29;
+			this.gamePathButton.Text = "Change Game Path";
+			this.gamePathButton.UseVisualStyleBackColor = true;
+			this.gamePathButton.Click += new System.EventHandler(this.ChangeGamePathClick);
+			// 
+			// gamePathLabel
+			// 
+			this.gamePathLabel.AutoSize = true;
+			this.gamePathLabel.ForeColor = System.Drawing.Color.White;
+			this.gamePathLabel.Location = new System.Drawing.Point(10, 310);
+			this.gamePathLabel.Name = "gamePathLabel";
+			this.gamePathLabel.Size = new System.Drawing.Size(76, 13);
+			this.gamePathLabel.TabIndex = 30;
+			this.gamePathLabel.Text = "Game path: ";
+			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
-			this.ClientSize = new System.Drawing.Size(357, 377);
+			this.ClientSize = new System.Drawing.Size(357, 389);
+			this.Controls.Add(this.gamePathLabel);
+			this.Controls.Add(this.gamePathButton);
 			this.Controls.Add(this.label15);
 			this.Controls.Add(this.launchParameters);
 			this.Controls.Add(this.label14);
@@ -351,8 +375,8 @@
 			this.Controls.Add(this.TokenEnable);
 			this.Controls.Add(this.passwordBox);
 			this.Controls.Add(this.label5);
-			this.Controls.Add(this.button2);
-			this.Controls.Add(this.label4);
+			this.Controls.Add(this.exePathButton);
+			this.Controls.Add(this.exePathLabel);
 			this.Controls.Add(this.label3);
 			this.Controls.Add(this.gameselect);
 			this.Controls.Add(this.label2);
@@ -361,7 +385,7 @@
 			this.Controls.Add(this.label1);
 			this.Controls.Add(this.mapselect);
 			this.Controls.Add(this.lancheck);
-			this.Controls.Add(this.consolecheck);
+			this.Controls.Add(this.legacyCheck);
 			this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.Name = "MainForm";
 			this.ShowIcon = false;
@@ -381,11 +405,11 @@
 		private System.Windows.Forms.Button button1;
 		private System.Windows.Forms.NumericUpDown maxplayers;
 		private System.Windows.Forms.Label label2;
-		private System.Windows.Forms.CheckBox consolecheck;
+		private System.Windows.Forms.CheckBox legacyCheck;
 		private System.Windows.Forms.ComboBox gameselect;
 		private System.Windows.Forms.Label label3;
-		private System.Windows.Forms.Label label4;
-		private System.Windows.Forms.Button button2;
+		private System.Windows.Forms.Label exePathLabel;
+		private System.Windows.Forms.Button exePathButton;
 		private System.Windows.Forms.Label label5;
 		private System.Windows.Forms.TextBox passwordBox;
 		private System.Windows.Forms.CheckBox TokenEnable;
@@ -402,5 +426,7 @@
 		private System.Windows.Forms.TextBox launchParameters;
 		private System.Windows.Forms.Label label14;
 		private System.Windows.Forms.Label label15;
+		private System.Windows.Forms.Button gamePathButton;
+		private System.Windows.Forms.Label gamePathLabel;
 	}
 }

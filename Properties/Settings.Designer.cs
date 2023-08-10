@@ -86,12 +86,12 @@ namespace Universal_Srcds_Launcher.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string FileName {
+        public string ExeName {
             get {
-                return ((string)(this["FileName"]));
+                return ((string)(this["ExeName"]));
             }
             set {
-                this["FileName"] = value;
+                this["ExeName"] = value;
             }
         }
         
@@ -146,12 +146,12 @@ namespace Universal_Srcds_Launcher.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string FilePath {
+        public string ExePath {
             get {
-                return ((string)(this["FilePath"]));
+                return ((string)(this["ExePath"]));
             }
             set {
-                this["FilePath"] = value;
+                this["ExePath"] = value;
             }
         }
         
@@ -164,6 +164,18 @@ namespace Universal_Srcds_Launcher.Properties {
             }
             set {
                 this["LaunchParams"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string GamePath {
+            get {
+                return ((string)(this["GamePath"]));
+            }
+            set {
+                this["GamePath"] = value;
             }
         }
     }

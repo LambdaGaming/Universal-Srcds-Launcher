@@ -11,9 +11,9 @@ namespace Universal_Srcds_Launcher
 		{
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
-			if ( string.IsNullOrWhiteSpace( Properties.Settings.Default.FileName ) || !File.Exists( Properties.Settings.Default.FileName ) )
+			if ( string.IsNullOrWhiteSpace( Properties.Settings.Default.ExeName ) || !File.Exists( Properties.Settings.Default.ExeName ) )
 			{
-				DialogResult BrowseCheck = MessageBox.Show( "Please select the server file.", "Server file path not found.", MessageBoxButtons.OK, MessageBoxIcon.Warning );
+				DialogResult BrowseCheck = MessageBox.Show( "Please select the server's exe file.", "Server exe file not found.", MessageBoxButtons.OK, MessageBoxIcon.Warning );
 				if ( BrowseCheck == DialogResult.OK )
 				{
 					OpenFileDialog browse = new OpenFileDialog();
@@ -21,8 +21,21 @@ namespace Universal_Srcds_Launcher
 					browse.RestoreDirectory = true;
 					if ( browse.ShowDialog() == DialogResult.OK )
 					{
-						Properties.Settings.Default.FileName = browse.FileName;
-						Properties.Settings.Default.FilePath = Path.GetDirectoryName( browse.FileName );
+						Properties.Settings.Default.ExeName = browse.FileName;
+						Properties.Settings.Default.ExePath = Path.GetDirectoryName( browse.FileName );
+					}
+				}
+				else return;
+			}
+			if ( string.IsNullOrWhiteSpace( Properties.Settings.Default.GamePath ) || !Directory.Exists( Properties.Settings.Default.GamePath ) )
+			{
+				DialogResult BrowseCheck = MessageBox.Show( "Please select the server's game folder.", "Server game folder not found.", MessageBoxButtons.OK, MessageBoxIcon.Warning );
+				if ( BrowseCheck == DialogResult.OK )
+				{
+					FolderBrowserDialog browse = new FolderBrowserDialog();
+					if ( browse.ShowDialog() == DialogResult.OK )
+					{
+						Properties.Settings.Default.GamePath = browse.SelectedPath;
 					}
 				}
 				else return;

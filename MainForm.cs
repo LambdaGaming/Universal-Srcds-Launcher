@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Text;
@@ -8,12 +9,8 @@ namespace Universal_Srcds_Launcher
 {
 	public partial class MainForm : Form
 	{
-		public string LegacyEnabled = "";
-		public string LANEnabled = "";
-		public string Password = "";
-		public string SteamToken = "";
-		public string CollectionID = "";
-		public string LaunchParams = "";
+		private Dictionary<string, string> ArgumentList = new Dictionary<string, string>();
+		private bool IsGmodOrSbox = false;
 
 		public MainForm()
 		{
@@ -23,7 +20,7 @@ namespace Universal_Srcds_Launcher
 
 			var Settings = Properties.Settings.Default;
 			lancheck.Checked = Settings.Lan;
-			consolecheck.Checked = Settings.Console;
+			legacyCheck.Checked = Settings.Console;
 			maxplayers.Value = Settings.MaxPlayers;
 			gameselect.Text = Settings.Gamemode;
 			gameselect.SelectedItem = Settings.Gamemode;
@@ -33,30 +30,51 @@ namespace Universal_Srcds_Launcher
 			TokenEnable.Checked = Settings.TokenEnabled;
 			CollectionIDBox.Text = Settings.CollectionID;
 			launchParameters.Text = Settings.LaunchParams;
+			exePathLabel.Text += Settings.ExeName;
+			gamePathLabel.Text += Settings.GamePath;
 
-			mapselect.Enabled = !consolecheck.Checked;
-			lancheck.Enabled = !consolecheck.Checked;
-			maxplayers.Enabled = !consolecheck.Checked;
-			gameselect.Enabled = !consolecheck.Checked;
-			passwordBox.Enabled = !consolecheck.Checked;
-			CollectionIDBox.Enabled = !consolecheck.Checked;
-			launchParameters.Enabled = !consolecheck.Checked;
+			mapselect.Enabled = !legacyCheck.Checked;
+			lancheck.Enabled = !legacyCheck.Checked;
+			maxplayers.Enabled = !legacyCheck.Checked;
+			gameselect.Enabled = !legacyCheck.Checked;
+			passwordBox.Enabled = !legacyCheck.Checked;
+			CollectionIDBox.Enabled = !legacyCheck.Checked;
+			launchParameters.Enabled = !legacyCheck.Checked;
 
-			StringBuilder path = new StringBuilder( label4.Text );
-			path.Append( Properties.Settings.Default.FileName );
-			label4.Text = path.ToString();
+			UpdateLists();
+		}
 
-			string[] listgamemodes = Directory.GetDirectories( Settings.FilePath + @"\garrysmod\gamemodes" );
-			foreach ( string gamemode in listgamemodes )
+		private void UpdateLists()
+		{
+			var Settings = Properties.Settings.Default;
+			if ( Directory.Exists( Settings.GamePath + @"\gamemodes" ) )
 			{
-				string foldername = Path.GetFileName( gamemode );
-				if ( foldername != "base" )
+				string[] listgamemodes = Directory.GetDirectories( Settings.GamePath + @"\gamemodes" );
+				foreach ( string gamemode in listgamemodes )
 				{
-					gameselect.Items.Add( foldername );
+					string foldername = Path.GetFileName( gamemode );
+					if ( foldername != "base" )
+					{
+						gameselect.Items.Add( foldername );
+					}
 				}
+				IsGmodOrSbox = true;
+			}
+			else if ( Directory.Exists( Settings.GamePath + @"\addons" ) )
+			{
+				// Insert placeholder for s&box
+				gameselect.Text = "facepunch.sandbox";
+				ArgumentList.Add( "Gamemode", $"+gamemode {gameselect.Text}" );
+				IsGmodOrSbox = true;
+			}
+			else
+			{
+				gameselect.Text = Path.GetDirectoryName( Settings.GamePath );
+				ArgumentList.Add( "Gamemode", $"-game {gameselect.Text}" );
+				IsGmodOrSbox = false;
 			}
 
-			string[] listmaps = Directory.GetFiles( Settings.FilePath + @"\garrysmod\maps" );
+			string[] listmaps = Directory.GetFiles( Settings.GamePath + @"\maps" );
 			foreach ( string map in listmaps )
 			{
 				string extension = Path.GetExtension( map );
@@ -72,61 +90,76 @@ namespace Universal_Srcds_Launcher
 		{
 			if ( lancheck.Checked )
 			{
-				LANEnabled = " +sv_lan 1 ";
+				ArgumentList.Add( "LanCheck", "+sv_lan 1" );
 				Properties.Settings.Default.Lan = lancheck.Checked;
 				return;
 			}
-			LANEnabled = "";
+			ArgumentList.Remove( "LanCheck" );
 			Properties.Settings.Default.Lan = lancheck.Checked;
 		}
 
-		private void ConsoleCheck( object sender, EventArgs e )
+		private void LegacyCheck( object sender, EventArgs e )
 		{
-			if ( consolecheck.Checked )
+			if ( legacyCheck.Checked )
 			{
-				LegacyEnabled = "";
+				ArgumentList.Remove( "LegacyCheck" );
 				mapselect.Text = "";
 				gameselect.Text = "";
 			}
 			else
 			{
-				LegacyEnabled = " -console ";
+				ArgumentList.Add( "LegacyCheck", "-console" );
 			}
-			mapselect.Enabled = !consolecheck.Checked;
-			lancheck.Enabled = !consolecheck.Checked;
-			maxplayers.Enabled = !consolecheck.Checked;
-			gameselect.Enabled = !consolecheck.Checked;
-			passwordBox.Enabled = !consolecheck.Checked;
-			CollectionIDBox.Enabled = !consolecheck.Checked;
-			launchParameters.Enabled = !consolecheck.Checked;
-			Properties.Settings.Default.Console = consolecheck.Checked;
+
+			mapselect.Enabled = !legacyCheck.Checked;
+			lancheck.Enabled = !legacyCheck.Checked;
+			maxplayers.Enabled = !legacyCheck.Checked;
+			gameselect.Enabled = !legacyCheck.Checked;
+			passwordBox.Enabled = !legacyCheck.Checked;
+			CollectionIDBox.Enabled = !legacyCheck.Checked;
+			launchParameters.Enabled = !legacyCheck.Checked;
+			Properties.Settings.Default.Console = legacyCheck.Checked;
 		}
 
 		private void MaxPlayersChanged( object sender, EventArgs e )
 		{
 			Properties.Settings.Default.MaxPlayers = Convert.ToInt32( maxplayers.Value );
+			ArgumentList.Add( "MaxPlayers", $"+maxplayers {maxplayers.Value}" );
 		}
 
 		private void MapChanged( object sender, EventArgs e )
 		{
 			Properties.Settings.Default.Map = mapselect.Text;
+			ArgumentList.Add( "Map", $"+map {mapselect.Text}" );
 		}
 
 		private void GamemodeChanged( object sender, EventArgs e )
 		{
 			Properties.Settings.Default.Gamemode = gameselect.Text;
+			ArgumentList.Add( "Gamemode", $"{( IsGmodOrSbox ? "+gamemode" : "-game" )} {gameselect.Text}" );
 		}
 
-		private void ChangePathClick( object sender, EventArgs e )
+		private void ChangeExePathClick( object sender, EventArgs e )
 		{
 			OpenFileDialog browse = new OpenFileDialog();
 			browse.Filter = "Server Executable (*.exe)|*.exe";
 			browse.RestoreDirectory = true;
 			if ( browse.ShowDialog() == DialogResult.OK )
 			{
-				Properties.Settings.Default.FileName = browse.FileName;
-				Properties.Settings.Default.FilePath = Path.GetDirectoryName( browse.FileName );
-				label4.Text = "Current server file path: " + Properties.Settings.Default.FileName;
+				Properties.Settings.Default.ExeName = browse.FileName;
+				Properties.Settings.Default.ExePath = Path.GetDirectoryName( browse.FileName );
+				exePathLabel.Text = "Exe path: " + Properties.Settings.Default.ExeName;
+			}
+		}
+
+		private void ChangeGamePathClick( object sender, EventArgs e )
+		{
+			FolderBrowserDialog browse = new FolderBrowserDialog();
+			if ( browse.ShowDialog() == DialogResult.OK )
+			{
+				Properties.Settings.Default.GamePath = browse.SelectedPath;
+				gamePathLabel.Text = "Game path: " + browse.SelectedPath;
+				UpdateLists();
 			}
 		}
 
@@ -135,10 +168,10 @@ namespace Universal_Srcds_Launcher
 			Properties.Settings.Default.Password = passwordBox.Text;
 			if ( string.IsNullOrWhiteSpace( passwordBox.Text ) )
 			{
-				Password = "";
+				ArgumentList.Remove( "Password" );
 				return;
 			}
-			Password = " +sv_password " + passwordBox.Text;
+			ArgumentList.Add( "Password", $"+sv_password {passwordBox.Text}" );
 		}
 
 		private void CollectionIDBoxChanged( object sender, EventArgs e )
@@ -146,10 +179,10 @@ namespace Universal_Srcds_Launcher
 			Properties.Settings.Default.CollectionID = CollectionIDBox.Text;
 			if ( string.IsNullOrWhiteSpace( CollectionIDBox.Text ) )
 			{
-				CollectionID = "";
+				ArgumentList.Remove( "CollectionID" );
 				return;
 			}
-			CollectionID = " +host_workshop_collection " + CollectionIDBox.Text;
+			ArgumentList.Add( "CollectionID", $"+host_workshop_collection {CollectionIDBox.Text}" );
 		}
 
 		private void LaunchParamsChanged( object sender, EventArgs e )
@@ -157,10 +190,10 @@ namespace Universal_Srcds_Launcher
 			Properties.Settings.Default.LaunchParams = launchParameters.Text;
 			if ( string.IsNullOrWhiteSpace( launchParameters.Text ) )
 			{
-				LaunchParams = "";
+				ArgumentList.Remove( "LaunchParams" );
 				return;
 			}
-			LaunchParams = launchParameters.Text;
+			ArgumentList.Add( "LaunchParams", launchParameters.Text );
 		}
 
 		private void TokenEnableChanged( object sender, EventArgs e )
@@ -170,7 +203,7 @@ namespace Universal_Srcds_Launcher
 				if ( !File.Exists( Properties.Settings.Default.TokenPath ) )
 				{
 					OpenFileDialog browse = new OpenFileDialog();
-					browse.InitialDirectory = Properties.Settings.Default.FilePath;
+					browse.InitialDirectory = Properties.Settings.Default.ExePath;
 					browse.Filter = "Text file containing token|*.txt";
 					if ( browse.ShowDialog() == DialogResult.OK )
 					{
@@ -179,23 +212,29 @@ namespace Universal_Srcds_Launcher
 					}
 				}
 				string Token = File.ReadAllText( Properties.Settings.Default.TokenPath );
-				SteamToken = " +sv_setsteamaccount " + Token;
+				ArgumentList.Add( "SteamToken", $"+sv_setsteamaccount {Token}" );
 			}
 			else
 			{
-				SteamToken = "";
+				ArgumentList.Remove( "SteamToken" );
 			}
 			Properties.Settings.Default.TokenEnabled = TokenEnable.Checked;
 		}
 
 		private void StartButtonClick( object sender, EventArgs e )
 		{
+			string arguments = "+r_hunkalloclightmaps 0";
+			foreach ( KeyValuePair<string, string> argument in ArgumentList )
+			{
+				arguments += $" {argument.Value} ";
+			}
+
 			var proc = new ProcessStartInfo
 			{
 				UseShellExecute = true,
-				WorkingDirectory = Properties.Settings.Default.FilePath,
-				FileName = Properties.Settings.Default.FileName,
-				Arguments = $"+gamemode {gameselect.Text} {LegacyEnabled} {LANEnabled} +map {mapselect.Text} +maxplayers {maxplayers.Value} +r_hunkalloclightmaps 0 {Password} {SteamToken} {CollectionID} {LaunchParams}"
+				WorkingDirectory = Properties.Settings.Default.ExePath,
+				FileName = Properties.Settings.Default.ExeName,
+				Arguments = arguments
 			};
 
 			try
@@ -203,9 +242,9 @@ namespace Universal_Srcds_Launcher
 				Process.Start( proc );
 				Close();
 			}
-			catch ( Exception )
+			catch ( Exception ex )
 			{
-				DialogResult launcherror = MessageBox.Show( "Failed to launch. Invalid file path.", "Launch Error", MessageBoxButtons.OK, MessageBoxIcon.Error );
+				DialogResult launcherror = MessageBox.Show( "Failed to launch. " + ex.Message, "Launch Error", MessageBoxButtons.OK, MessageBoxIcon.Error );
 				if ( launcherror == DialogResult.OK ) Close();
 			}
 		}
