@@ -9,7 +9,6 @@ namespace Universal_Srcds_Launcher
 {
 	public partial class MainForm : Form
 	{
-		private Dictionary<string, string> ArgumentList = new Dictionary<string, string>();
 		private bool IsGmodOrSbox = false;
 
 		public MainForm()
@@ -44,6 +43,7 @@ namespace Universal_Srcds_Launcher
 			UpdateLists();
 		}
 
+		// Update gamemode and map lists when the game path changes
 		private void UpdateLists()
 		{
 			var Settings = Properties.Settings.Default;
@@ -64,13 +64,11 @@ namespace Universal_Srcds_Launcher
 			{
 				// Insert placeholder for s&box
 				gameselect.Text = "facepunch.sandbox";
-				ArgumentList.Add( "Gamemode", $"+gamemode {gameselect.Text}" );
 				IsGmodOrSbox = true;
 			}
 			else
 			{
 				gameselect.Text = Path.GetDirectoryName( Settings.GamePath );
-				ArgumentList.Add( "Gamemode", $"-game {gameselect.Text}" );
 				IsGmodOrSbox = false;
 			}
 
@@ -86,29 +84,19 @@ namespace Universal_Srcds_Launcher
 			}
 		}
 
+		// Called when the lan option is changed
 		private void LanCheck( object sender, EventArgs e )
 		{
-			if ( lancheck.Checked )
-			{
-				ArgumentList.Add( "LanCheck", "+sv_lan 1" );
-				Properties.Settings.Default.Lan = lancheck.Checked;
-				return;
-			}
-			ArgumentList.Remove( "LanCheck" );
 			Properties.Settings.Default.Lan = lancheck.Checked;
 		}
 
+		// Called when the legacy launcher option is changed
 		private void LegacyCheck( object sender, EventArgs e )
 		{
 			if ( legacyCheck.Checked )
 			{
-				ArgumentList.Remove( "LegacyCheck" );
 				mapselect.Text = "";
 				gameselect.Text = "";
-			}
-			else
-			{
-				ArgumentList.Add( "LegacyCheck", "-console" );
 			}
 
 			mapselect.Enabled = !legacyCheck.Checked;
@@ -121,24 +109,25 @@ namespace Universal_Srcds_Launcher
 			Properties.Settings.Default.Console = legacyCheck.Checked;
 		}
 
+		// Called when the max players option is changed
 		private void MaxPlayersChanged( object sender, EventArgs e )
 		{
 			Properties.Settings.Default.MaxPlayers = Convert.ToInt32( maxplayers.Value );
-			ArgumentList.Add( "MaxPlayers", $"+maxplayers {maxplayers.Value}" );
 		}
 
+		// Called when the map option is changed
 		private void MapChanged( object sender, EventArgs e )
 		{
 			Properties.Settings.Default.Map = mapselect.Text;
-			ArgumentList.Add( "Map", $"+map {mapselect.Text}" );
 		}
 
+		// Called when the gamemode option is changed
 		private void GamemodeChanged( object sender, EventArgs e )
 		{
 			Properties.Settings.Default.Gamemode = gameselect.Text;
-			ArgumentList.Add( "Gamemode", $"{( IsGmodOrSbox ? "+gamemode" : "-game" )} {gameselect.Text}" );
 		}
 
+		// Called when the change exe path button is clicked
 		private void ChangeExePathClick( object sender, EventArgs e )
 		{
 			OpenFileDialog browse = new OpenFileDialog();
@@ -152,6 +141,7 @@ namespace Universal_Srcds_Launcher
 			}
 		}
 
+		// Called when the change game path button is clicked
 		private void ChangeGamePathClick( object sender, EventArgs e )
 		{
 			FolderBrowserDialog browse = new FolderBrowserDialog();
@@ -163,39 +153,25 @@ namespace Universal_Srcds_Launcher
 			}
 		}
 
+		// Called when the password option is changed
 		private void PasswordChanged( object sender, EventArgs e )
 		{
 			Properties.Settings.Default.Password = passwordBox.Text;
-			if ( string.IsNullOrWhiteSpace( passwordBox.Text ) )
-			{
-				ArgumentList.Remove( "Password" );
-				return;
-			}
-			ArgumentList.Add( "Password", $"+sv_password {passwordBox.Text}" );
 		}
 
+		// Called when the workshop collection option is changed
 		private void CollectionIDBoxChanged( object sender, EventArgs e )
 		{
 			Properties.Settings.Default.CollectionID = CollectionIDBox.Text;
-			if ( string.IsNullOrWhiteSpace( CollectionIDBox.Text ) )
-			{
-				ArgumentList.Remove( "CollectionID" );
-				return;
-			}
-			ArgumentList.Add( "CollectionID", $"+host_workshop_collection {CollectionIDBox.Text}" );
 		}
 
+		// Called when the launch parameters option is changed
 		private void LaunchParamsChanged( object sender, EventArgs e )
 		{
 			Properties.Settings.Default.LaunchParams = launchParameters.Text;
-			if ( string.IsNullOrWhiteSpace( launchParameters.Text ) )
-			{
-				ArgumentList.Remove( "LaunchParams" );
-				return;
-			}
-			ArgumentList.Add( "LaunchParams", launchParameters.Text );
 		}
 
+		// Called when the steam token option is changed
 		private void TokenEnableChanged( object sender, EventArgs e )
 		{
 			if ( TokenEnable.Checked )
@@ -211,29 +187,46 @@ namespace Universal_Srcds_Launcher
 						TokenEnable.Checked = !string.IsNullOrEmpty( Properties.Settings.Default.TokenPath );
 					}
 				}
-				string Token = File.ReadAllText( Properties.Settings.Default.TokenPath );
-				ArgumentList.Add( "SteamToken", $"+sv_setsteamaccount {Token}" );
-			}
-			else
-			{
-				ArgumentList.Remove( "SteamToken" );
 			}
 			Properties.Settings.Default.TokenEnabled = TokenEnable.Checked;
 		}
 
+		// Called when the start button is clicked
 		private void StartButtonClick( object sender, EventArgs e )
 		{
+			var Settings = Properties.Settings.Default;
 			string arguments = "+r_hunkalloclightmaps 0";
-			foreach ( KeyValuePair<string, string> argument in ArgumentList )
+
+			if ( !legacyCheck.Checked )
+				arguments += " -console";
+
+			if ( lancheck.Checked )
+				arguments += " +sv_lan 1";
+
+			if ( TokenEnable.Checked )
 			{
-				arguments += $" {argument.Value} ";
+				string Token = File.ReadAllText( Settings.TokenPath );
+				arguments += $" +sv_setsteamaccount {Token}";
 			}
+
+			if ( IsGmodOrSbox )
+				arguments += $" +gamemode {gameselect.Text}";
+			else
+				arguments += $" -game {Path.GetDirectoryName( Settings.GamePath )}";
+
+			if ( !string.IsNullOrWhiteSpace( passwordBox.Text ) )
+				arguments += $" +sv_password {passwordBox.Text}";
+
+			if ( !string.IsNullOrWhiteSpace( CollectionIDBox.Text ) )
+				arguments += $" +host_workshop_collection {CollectionIDBox.Text}";
+
+			arguments += $" +maxplayers {maxplayers.Value} +map {mapselect.Text} {launchParameters.Text}";
 
 			var proc = new ProcessStartInfo
 			{
 				UseShellExecute = true,
-				WorkingDirectory = Properties.Settings.Default.ExePath,
-				FileName = Properties.Settings.Default.ExeName,
+				WorkingDirectory = Settings.ExePath,
+				FileName = Settings.ExeName,
 				Arguments = arguments
 			};
 
