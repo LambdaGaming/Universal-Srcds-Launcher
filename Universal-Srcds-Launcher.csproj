@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{3738F99F-86D6-43B2-94BF-BA9636E0D7DC}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>GMod_Server_Launcher_Console</RootNamespace>
-    <AssemblyName>GMod-Server-Launcher-Console</AssemblyName>
+    <RootNamespace>Universal_Srcds_Launcher</RootNamespace>
+    <AssemblyName>Universal-Srcds-Launcher</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -81,6 +81,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="README.md" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

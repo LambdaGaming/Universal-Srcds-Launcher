@@ -4,7 +4,7 @@ using System.IO;
 using System.Text;
 using System.Windows.Forms;
 
-namespace GMod_Server_Launcher_Console
+namespace Universal_Srcds_Launcher
 {
 	public partial class MainForm : Form
 	{

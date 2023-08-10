@@ -1,4 +1,4 @@
-﻿namespace GMod_Server_Launcher_Console
+﻿namespace Universal_Srcds_Launcher
 {
 	partial class MainForm
 	{
@@ -20,7 +20,6 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
 			this.lancheck = new System.Windows.Forms.CheckBox();
 			this.mapselect = new System.Windows.Forms.ComboBox();
 			this.label1 = new System.Windows.Forms.Label();
@@ -364,10 +363,10 @@
 			this.Controls.Add(this.lancheck);
 			this.Controls.Add(this.consolecheck);
 			this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.Name = "MainForm";
+			this.ShowIcon = false;
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-			this.Text = "Garry\'s Mod Server Launcher GUI";
+			this.Text = "Universal SRCDS Launcher";
 			((System.ComponentModel.ISupportInitialize)(this.maxplayers)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();

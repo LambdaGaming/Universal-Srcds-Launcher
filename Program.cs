@@ -2,7 +2,7 @@
 using System.IO;
 using System.Windows.Forms;
 
-namespace GMod_Server_Launcher_Console
+namespace Universal_Srcds_Launcher
 {
 	static class Program
 	{
