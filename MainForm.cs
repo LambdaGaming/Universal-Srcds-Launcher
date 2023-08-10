@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Text;
@@ -63,12 +62,18 @@ namespace Universal_Srcds_Launcher
 			else if ( Directory.Exists( Settings.GamePath + @"\addons" ) )
 			{
 				// Insert placeholder for s&box
-				gameselect.Text = "facepunch.sandbox";
+				if ( string.IsNullOrWhiteSpace( gameselect.Text ) )
+				{
+					gameselect.Text = "facepunch.sandbox";
+				}
 				IsGmodOrSbox = true;
 			}
 			else
 			{
-				gameselect.Text = Path.GetDirectoryName( Settings.GamePath );
+				if ( string.IsNullOrWhiteSpace( gameselect.Text ) )
+				{
+					gameselect.Text = Path.GetFileName( Settings.GamePath );
+				}
 				IsGmodOrSbox = false;
 			}
 
@@ -149,6 +154,7 @@ namespace Universal_Srcds_Launcher
 			{
 				Properties.Settings.Default.GamePath = browse.SelectedPath;
 				gamePathLabel.Text = "Game path: " + browse.SelectedPath;
+				gameselect.Text = "";
 				UpdateLists();
 			}
 		}
@@ -212,7 +218,7 @@ namespace Universal_Srcds_Launcher
 			if ( IsGmodOrSbox )
 				arguments += $" +gamemode {gameselect.Text}";
 			else
-				arguments += $" -game {Path.GetDirectoryName( Settings.GamePath )}";
+				arguments += $" -game {gameselect.Text}";
 
 			if ( !string.IsNullOrWhiteSpace( passwordBox.Text ) )
 				arguments += $" +sv_password {passwordBox.Text}";
