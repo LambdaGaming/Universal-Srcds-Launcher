@@ -144,9 +144,9 @@
 			this.consolecheck.ForeColor = System.Drawing.Color.White;
 			this.consolecheck.Location = new System.Drawing.Point(12, 12);
 			this.consolecheck.Name = "consolecheck";
-			this.consolecheck.Size = new System.Drawing.Size(114, 17);
+			this.consolecheck.Size = new System.Drawing.Size(150, 17);
 			this.consolecheck.TabIndex = 1;
-			this.consolecheck.Text = "Enable Console";
+			this.consolecheck.Text = "Use Legacy Launcher";
 			this.consolecheck.UseVisualStyleBackColor = true;
 			this.consolecheck.CheckedChanged += new System.EventHandler(this.ConsoleCheck);
 			// 

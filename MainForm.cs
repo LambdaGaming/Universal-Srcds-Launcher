@@ -8,7 +8,7 @@ namespace GMod_Server_Launcher_Console
 {
 	public partial class MainForm : Form
 	{
-		public string ConsoleEnabled = "";
+		public string LegacyEnabled = "";
 		public string LANEnabled = "";
 		public string Password = "";
 		public string SteamToken = "";
@@ -34,12 +34,13 @@ namespace GMod_Server_Launcher_Console
 			CollectionIDBox.Text = Settings.CollectionID;
 			launchParameters.Text = Settings.LaunchParams;
 
-			mapselect.Enabled = consolecheck.Checked;
-			lancheck.Enabled = consolecheck.Checked;
-			maxplayers.Enabled = consolecheck.Checked;
-			gameselect.Enabled = consolecheck.Checked;
-			passwordBox.Enabled = consolecheck.Checked;
-			CollectionIDBox.Enabled = consolecheck.Checked;
+			mapselect.Enabled = !consolecheck.Checked;
+			lancheck.Enabled = !consolecheck.Checked;
+			maxplayers.Enabled = !consolecheck.Checked;
+			gameselect.Enabled = !consolecheck.Checked;
+			passwordBox.Enabled = !consolecheck.Checked;
+			CollectionIDBox.Enabled = !consolecheck.Checked;
+			launchParameters.Enabled = !consolecheck.Checked;
 
 			StringBuilder path = new StringBuilder( label4.Text );
 			path.Append( Properties.Settings.Default.FileName );
@@ -83,20 +84,21 @@ namespace GMod_Server_Launcher_Console
 		{
 			if ( consolecheck.Checked )
 			{
-				ConsoleEnabled = " -console ";
-			}
-			else
-			{
-				ConsoleEnabled = "";
+				LegacyEnabled = "";
 				mapselect.Text = "";
 				gameselect.Text = "";
 			}
-			mapselect.Enabled = consolecheck.Checked;
-			lancheck.Enabled = consolecheck.Checked;
-			maxplayers.Enabled = consolecheck.Checked;
-			gameselect.Enabled = consolecheck.Checked;
-			passwordBox.Enabled = consolecheck.Checked;
-			CollectionIDBox.Enabled = consolecheck.Checked;
+			else
+			{
+				LegacyEnabled = " -console ";
+			}
+			mapselect.Enabled = !consolecheck.Checked;
+			lancheck.Enabled = !consolecheck.Checked;
+			maxplayers.Enabled = !consolecheck.Checked;
+			gameselect.Enabled = !consolecheck.Checked;
+			passwordBox.Enabled = !consolecheck.Checked;
+			CollectionIDBox.Enabled = !consolecheck.Checked;
+			launchParameters.Enabled = !consolecheck.Checked;
 			Properties.Settings.Default.Console = consolecheck.Checked;
 		}
 
@@ -193,7 +195,7 @@ namespace GMod_Server_Launcher_Console
 				UseShellExecute = true,
 				WorkingDirectory = Properties.Settings.Default.FilePath,
 				FileName = Properties.Settings.Default.FileName,
-				Arguments = $"+gamemode {gameselect.Text} {ConsoleEnabled} {LANEnabled} +map {mapselect.Text} +maxplayers {maxplayers.Value} +r_hunkalloclightmaps 0 {Password} {SteamToken} {CollectionID} {LaunchParams}"
+				Arguments = $"+gamemode {gameselect.Text} {LegacyEnabled} {LANEnabled} +map {mapselect.Text} +maxplayers {maxplayers.Value} +r_hunkalloclightmaps 0 {Password} {SteamToken} {CollectionID} {LaunchParams}"
 			};
 
 			try
