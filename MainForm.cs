@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
 using System.IO;
-using System.Text;
 using System.Windows.Forms;
 
 namespace Universal_Srcds_Launcher
@@ -46,6 +45,8 @@ namespace Universal_Srcds_Launcher
 		private void UpdateLists()
 		{
 			var Settings = Properties.Settings.Default;
+			gameselect.Items.Clear();
+			mapselect.Items.Clear();
 			if ( Directory.Exists( Settings.GamePath + @"\gamemodes" ) )
 			{
 				string[] listgamemodes = Directory.GetDirectories( Settings.GamePath + @"\gamemodes" );
@@ -77,14 +78,17 @@ namespace Universal_Srcds_Launcher
 				IsGmodOrSbox = false;
 			}
 
-			string[] listmaps = Directory.GetFiles( Settings.GamePath + @"\maps" );
-			foreach ( string map in listmaps )
+			if ( Directory.Exists( Settings.GamePath + @"\maps" ) )
 			{
-				string extension = Path.GetExtension( map );
-				string mapname = Path.GetFileNameWithoutExtension( map );
-				if ( extension == ".bsp" )
+				string[] listmaps = Directory.GetFiles( Settings.GamePath + @"\maps" );
+				foreach ( string map in listmaps )
 				{
-					mapselect.Items.Add( mapname );
+					string extension = Path.GetExtension( map );
+					string mapname = Path.GetFileNameWithoutExtension( map );
+					if ( extension == ".bsp" )
+					{
+						mapselect.Items.Add( mapname );
+					}
 				}
 			}
 		}
@@ -155,6 +159,7 @@ namespace Universal_Srcds_Launcher
 				Properties.Settings.Default.GamePath = browse.SelectedPath;
 				gamePathLabel.Text = "Game path: " + browse.SelectedPath;
 				gameselect.Text = "";
+				mapselect.Text = "";
 				UpdateLists();
 			}
 		}
