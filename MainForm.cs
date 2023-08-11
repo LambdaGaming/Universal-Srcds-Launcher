@@ -60,7 +60,7 @@ namespace Universal_Srcds_Launcher
 				}
 				IsGmodOrSbox = true;
 			}
-			else if ( Directory.Exists( Settings.GamePath + @"\addons" ) )
+			else if ( Path.GetFileName( Settings.ExePath ) == "sbox-server.exe" )
 			{
 				// Insert placeholder for s&box
 				if ( string.IsNullOrWhiteSpace( gameselect.Text ) )
