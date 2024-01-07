@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.IO;
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
 namespace Universal_Srcds_Launcher
@@ -47,9 +48,9 @@ namespace Universal_Srcds_Launcher
 			var Settings = Properties.Settings.Default;
 			gameselect.Items.Clear();
 			mapselect.Items.Clear();
-			if ( Directory.Exists( Settings.GamePath + @"\gamemodes" ) )
+			if ( Directory.Exists( Settings.GamePath + "/gamemodes" ) )
 			{
-				string[] listgamemodes = Directory.GetDirectories( Settings.GamePath + @"\gamemodes" );
+				string[] listgamemodes = Directory.GetDirectories( Settings.GamePath + "/gamemodes" );
 				foreach ( string gamemode in listgamemodes )
 				{
 					string foldername = Path.GetFileName( gamemode );
@@ -78,9 +79,9 @@ namespace Universal_Srcds_Launcher
 				IsGmodOrSbox = false;
 			}
 
-			if ( Directory.Exists( Settings.GamePath + @"\maps" ) )
+			if ( Directory.Exists( Settings.GamePath + "/maps" ) )
 			{
-				string[] listmaps = Directory.GetFiles( Settings.GamePath + @"\maps" );
+				string[] listmaps = Directory.GetFiles( Settings.GamePath + "/maps" );
 				foreach ( string map in listmaps )
 				{
 					string extension = Path.GetExtension( map );
@@ -140,7 +141,7 @@ namespace Universal_Srcds_Launcher
 		private void ChangeExePathClick( object sender, EventArgs e )
 		{
 			OpenFileDialog browse = new OpenFileDialog();
-			browse.Filter = "Server Executable (*.exe)|*.exe";
+			browse.Filter = "Server Executable (*.exe)|*.exe|Linux Server Script (srcds_run*)|srcds_run*";
 			browse.RestoreDirectory = true;
 			if ( browse.ShowDialog() == DialogResult.OK )
 			{
@@ -205,6 +206,7 @@ namespace Universal_Srcds_Launcher
 		// Called when the start button is clicked
 		private void StartButtonClick( object sender, EventArgs e )
 		{
+			bool isLinux = RuntimeInformation.IsOSPlatform( OSPlatform.Linux );
 			var Settings = Properties.Settings.Default;
 			string arguments = "+r_hunkalloclightmaps 0";
 
@@ -233,11 +235,14 @@ namespace Universal_Srcds_Launcher
 
 			arguments += $" +maxplayers {maxplayers.Value} +map {mapselect.Text} {launchParameters.Text}";
 
+			if ( isLinux )
+				arguments = Settings.ExeName + " " + arguments;
+
 			var proc = new ProcessStartInfo
 			{
-				UseShellExecute = true,
+				UseShellExecute = false,
 				WorkingDirectory = Settings.ExePath,
-				FileName = Settings.ExeName,
+				FileName = isLinux ? "/bin/bash" : Settings.ExeName,
 				Arguments = arguments
 			};
 
