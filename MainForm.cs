@@ -236,11 +236,12 @@ namespace Universal_Srcds_Launcher
 			arguments += $" +maxplayers {maxplayers.Value} +map {mapselect.Text} {launchParameters.Text}";
 
 			if ( isLinux )
-				arguments = Settings.ExeName + " " + arguments;
+				arguments = $"-c \"gnome-terminal --maximize -- bash -c 'cd {Path.GetDirectoryName( Settings.GamePath )}; ./{Path.GetFileName( Settings.ExeName )} {arguments}; exec bash'\"";
 
 			var proc = new ProcessStartInfo
 			{
 				UseShellExecute = false,
+				RedirectStandardOutput = isLinux,
 				WorkingDirectory = Settings.ExePath,
 				FileName = isLinux ? "/bin/bash" : Settings.ExeName,
 				Arguments = arguments

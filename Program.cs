@@ -13,7 +13,7 @@ namespace Universal_Srcds_Launcher
 			Application.SetCompatibleTextRenderingDefault(false);
 			if ( string.IsNullOrWhiteSpace( Properties.Settings.Default.ExeName ) || !File.Exists( Properties.Settings.Default.ExeName ) )
 			{
-				DialogResult BrowseCheck = MessageBox.Show( "Please select the server's exe file.", "Server exe file not found.", MessageBoxButtons.OK, MessageBoxIcon.Warning );
+				DialogResult BrowseCheck = MessageBox.Show( "Please select the server executable.", "Server executable not found.", MessageBoxButtons.OK, MessageBoxIcon.Warning );
 				if ( BrowseCheck == DialogResult.OK )
 				{
 					OpenFileDialog browse = new OpenFileDialog();
