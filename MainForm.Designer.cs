@@ -184,12 +184,13 @@
 			// 
 			// exePathButton
 			// 
+			this.exePathButton.BackColor = System.Drawing.Color.White;
 			this.exePathButton.Location = new System.Drawing.Point(11, 271);
 			this.exePathButton.Name = "exePathButton";
 			this.exePathButton.Size = new System.Drawing.Size(119, 23);
 			this.exePathButton.TabIndex = 11;
 			this.exePathButton.Text = "Change Exe Path";
-			this.exePathButton.UseVisualStyleBackColor = true;
+			this.exePathButton.UseVisualStyleBackColor = false;
 			this.exePathButton.Click += new System.EventHandler(this.ChangeExePathClick);
 			// 
 			// label5
@@ -333,12 +334,13 @@
 			// 
 			// gamePathButton
 			// 
+			this.gamePathButton.BackColor = System.Drawing.Color.White;
 			this.gamePathButton.Location = new System.Drawing.Point(216, 271);
 			this.gamePathButton.Name = "gamePathButton";
 			this.gamePathButton.Size = new System.Drawing.Size(129, 23);
 			this.gamePathButton.TabIndex = 29;
 			this.gamePathButton.Text = "Change Game Path";
-			this.gamePathButton.UseVisualStyleBackColor = true;
+			this.gamePathButton.UseVisualStyleBackColor = false;
 			this.gamePathButton.Click += new System.EventHandler(this.ChangeGamePathClick);
 			// 
 			// gamePathLabel
