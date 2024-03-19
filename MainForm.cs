@@ -30,6 +30,7 @@ namespace Universal_Srcds_Launcher
 			launchParameters.Text = Settings.LaunchParams;
 			exePathLabel.Text += Settings.ExeName;
 			gamePathLabel.Text += Settings.GamePath;
+			linuxShell.Text = Settings.LinuxShell;
 
 			mapselect.Enabled = !legacyCheck.Checked;
 			lancheck.Enabled = !legacyCheck.Checked;
@@ -183,6 +184,12 @@ namespace Universal_Srcds_Launcher
 			Properties.Settings.Default.LaunchParams = launchParameters.Text;
 		}
 
+		// Called when the linux terminal program value is changed
+		private void LinuxShellChanged( object sender, EventArgs e )
+		{
+			Properties.Settings.Default.LinuxShell = linuxShell.Text;
+		}
+
 		// Called when the steam token option is changed
 		private void TokenEnableChanged( object sender, EventArgs e )
 		{
@@ -236,7 +243,7 @@ namespace Universal_Srcds_Launcher
 			arguments += $" +maxplayers {maxplayers.Value} +map {mapselect.Text} {launchParameters.Text}";
 
 			if ( isLinux )
-				arguments = $"-c \"gnome-terminal --maximize -- bash -c 'cd {Path.GetDirectoryName( Settings.GamePath )}; ./{Path.GetFileName( Settings.ExeName )} {arguments}; exec bash'\"";
+				arguments = $"-c \"{linuxShell.Text} --maximize -- bash -c 'cd {Path.GetDirectoryName( Settings.GamePath )}; ./{Path.GetFileName( Settings.ExeName )} {arguments}; exec bash'\"";
 
 			var proc = new ProcessStartInfo
 			{
