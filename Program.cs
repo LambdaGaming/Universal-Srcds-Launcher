@@ -17,7 +17,7 @@ namespace Universal_Srcds_Launcher
 				if ( BrowseCheck == DialogResult.OK )
 				{
 					OpenFileDialog browse = new OpenFileDialog();
-					browse.Filter = "Server Executable (*.exe)|*.exe|Linux Server Script (srcds_run*)|srcds_run*";
+					browse.Filter = "Server Executable (*.exe;srcds_run*)|*.exe;srcds_run*";
 					browse.RestoreDirectory = true;
 					if ( browse.ShowDialog() == DialogResult.OK )
 					{
