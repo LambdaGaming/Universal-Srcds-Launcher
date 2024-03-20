@@ -2,6 +2,7 @@
  This is a replacement launcher compatible with any GoldSrc, Source, or Source 2 dedicated server that allows you to launch your servers with additional options, without having to use a command line or manually type out parameters for a shortcut. The launcher supports Windows 7 and newer, and should also work on any Linux distro with Mono installed, though only Linux Mint and Manjaro have been tested.
 
 ![](https://raw.githubusercontent.com/LambdaGaming/GMod-Server-Launcher-Console/master/reference.PNG)
+![](https://raw.githubusercontent.com/LambdaGaming/GMod-Server-Launcher-Console/master/reference2.png)
 
 # Features:
 - Option to use legacy launcher. If this is enabled, most other options will be disabled since the legacy launcher will ignore them.
@@ -21,7 +22,8 @@
 - The `+r_hunkalloclightmaps` parameter is automatically set to 0
   - Setting this to 0 prevents crashes when loading complex maps. Some games have it set to 1 by default.
 - Linux terminal program name
-  - If running on Linux, you can have the server open in the terminal program of your choice by entering the terminal's command name, such as gnome-terminal
+  - If you're on Linux, you can have the server open in the terminal program of your choice by entering the terminal's command name followed by the parameter to execute the built-in command, as well as any other parameters you'd like
+  - Examples: `gnome-terminal --`, `konsole -e`
 - All settings are saved when the program closes and will be automatically set when the program is reopened.
 
 # Working with more than one server:
