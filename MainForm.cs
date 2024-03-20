@@ -243,7 +243,7 @@ namespace Universal_Srcds_Launcher
 			arguments += $" +maxplayers {maxplayers.Value} +map {mapselect.Text} {launchParameters.Text}";
 
 			if ( isLinux )
-				arguments = $"-c \"{linuxShell.Text} --maximize -- bash -c 'cd {Path.GetDirectoryName( Settings.GamePath )}; ./{Path.GetFileName( Settings.ExeName )} {arguments}; exec bash'\"";
+				arguments = $"-c \"{linuxShell.Text} bash -c 'cd {Path.GetDirectoryName( Settings.GamePath )}; ./{Path.GetFileName( Settings.ExeName )} {arguments}; exec bash'\"";
 
 			var proc = new ProcessStartInfo
 			{
