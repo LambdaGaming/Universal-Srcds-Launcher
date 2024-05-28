@@ -92,7 +92,7 @@
 			this.label1.AutoSize = true;
 			this.label1.Dock = System.Windows.Forms.DockStyle.Top;
 			this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label1.ForeColor = System.Drawing.SystemColors.Control;
+			this.label1.ForeColor = System.Drawing.Color.White;
 			this.label1.Location = new System.Drawing.Point(10, 44);
 			this.label1.Name = "label1";
 			this.label1.Padding = new System.Windows.Forms.Padding(0, 10, 0, 0);
@@ -144,7 +144,7 @@
 			this.label2.AutoSize = true;
 			this.label2.Dock = System.Windows.Forms.DockStyle.Top;
 			this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label2.ForeColor = System.Drawing.SystemColors.Control;
+			this.label2.ForeColor = System.Drawing.Color.White;
 			this.label2.Location = new System.Drawing.Point(10, 92);
 			this.label2.Margin = new System.Windows.Forms.Padding(3);
 			this.label2.Name = "label2";
@@ -185,7 +185,7 @@
 			this.label3.AutoSize = true;
 			this.label3.Dock = System.Windows.Forms.DockStyle.Top;
 			this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label3.ForeColor = System.Drawing.SystemColors.Control;
+			this.label3.ForeColor = System.Drawing.Color.White;
 			this.label3.Location = new System.Drawing.Point(10, 10);
 			this.label3.Name = "label3";
 			this.label3.Size = new System.Drawing.Size(111, 13);
@@ -207,6 +207,7 @@
 			// 
 			this.exePathButton.BackColor = System.Drawing.Color.White;
 			this.exePathButton.Dock = System.Windows.Forms.DockStyle.Top;
+			this.exePathButton.ForeColor = System.Drawing.Color.Black;
 			this.exePathButton.Location = new System.Drawing.Point(10, 229);
 			this.exePathButton.Name = "exePathButton";
 			this.exePathButton.Size = new System.Drawing.Size(148, 23);
@@ -306,6 +307,7 @@
 			// 
 			this.gamePathButton.BackColor = System.Drawing.Color.White;
 			this.gamePathButton.Dock = System.Windows.Forms.DockStyle.Top;
+			this.gamePathButton.ForeColor = System.Drawing.Color.Black;
 			this.gamePathButton.Location = new System.Drawing.Point(10, 201);
 			this.gamePathButton.Name = "gamePathButton";
 			this.gamePathButton.Size = new System.Drawing.Size(148, 23);
