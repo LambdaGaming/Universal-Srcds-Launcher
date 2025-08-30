@@ -19,8 +19,6 @@
   - Certain games including Garry's Mod and CS:GO require the server to be registered with Steam in this way for it to show up in the server browser
 - Steam workshop collection option (`+host_workshop_collection`)
 - Input for additional launch parameters
-- The `+r_hunkalloclightmaps` parameter is automatically set to 0
-  - Setting this to 0 prevents crashes when loading complex maps. Some games have it set to 1 by default.
 - Linux terminal program name
   - If you're on Linux, you can have the server open in the terminal program of your choice by entering the terminal's command name followed by the parameter to execute the built-in command, as well as any other parameters you'd like
   - Examples: `gnome-terminal --`, `konsole -e`

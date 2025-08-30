@@ -215,7 +215,7 @@ namespace Universal_Srcds_Launcher
 		{
 			bool isLinux = RuntimeInformation.IsOSPlatform( OSPlatform.Linux );
 			var Settings = Properties.Settings.Default;
-			string arguments = "+r_hunkalloclightmaps 0";
+			string arguments = "";
 
 			if ( !legacyCheck.Checked )
 				arguments += " -console";
