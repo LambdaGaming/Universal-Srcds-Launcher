@@ -41,8 +41,6 @@
 			this.label14 = new System.Windows.Forms.Label();
 			this.gamePathButton = new System.Windows.Forms.Button();
 			this.gamePathLabel = new System.Windows.Forms.Label();
-			this.linuxShell = new System.Windows.Forms.TextBox();
-			this.label4 = new System.Windows.Forms.Label();
 			this.splitContainer1 = new System.Windows.Forms.SplitContainer();
 			this.label17 = new System.Windows.Forms.Label();
 			this.label16 = new System.Windows.Forms.Label();
@@ -50,6 +48,7 @@
 			this.label8 = new System.Windows.Forms.Label();
 			this.label7 = new System.Windows.Forms.Label();
 			this.label18 = new System.Windows.Forms.Label();
+			this.label4 = new System.Windows.Forms.Label();
 			((System.ComponentModel.ISupportInitialize)(this.maxplayers)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
 			this.splitContainer1.Panel1.SuspendLayout();
@@ -107,7 +106,7 @@
 			this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
 			this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.button1.ForeColor = System.Drawing.Color.White;
-			this.button1.Location = new System.Drawing.Point(0, 294);
+			this.button1.Location = new System.Drawing.Point(0, 280);
 			this.button1.Name = "button1";
 			this.button1.Size = new System.Drawing.Size(357, 64);
 			this.button1.TabIndex = 4;
@@ -197,7 +196,7 @@
 			this.exePathLabel.AutoSize = true;
 			this.exePathLabel.Dock = System.Windows.Forms.DockStyle.Bottom;
 			this.exePathLabel.ForeColor = System.Drawing.Color.White;
-			this.exePathLabel.Location = new System.Drawing.Point(0, 268);
+			this.exePathLabel.Location = new System.Drawing.Point(0, 254);
 			this.exePathLabel.Name = "exePathLabel";
 			this.exePathLabel.Size = new System.Drawing.Size(65, 13);
 			this.exePathLabel.TabIndex = 10;
@@ -208,7 +207,7 @@
 			this.exePathButton.BackColor = System.Drawing.Color.White;
 			this.exePathButton.Dock = System.Windows.Forms.DockStyle.Top;
 			this.exePathButton.ForeColor = System.Drawing.Color.Black;
-			this.exePathButton.Location = new System.Drawing.Point(10, 229);
+			this.exePathButton.Location = new System.Drawing.Point(10, 206);
 			this.exePathButton.Name = "exePathButton";
 			this.exePathButton.Size = new System.Drawing.Size(148, 23);
 			this.exePathButton.TabIndex = 11;
@@ -306,11 +305,10 @@
 			// gamePathButton
 			// 
 			this.gamePathButton.BackColor = System.Drawing.Color.White;
-			this.gamePathButton.Dock = System.Windows.Forms.DockStyle.Top;
 			this.gamePathButton.ForeColor = System.Drawing.Color.Black;
-			this.gamePathButton.Location = new System.Drawing.Point(10, 201);
+			this.gamePathButton.Location = new System.Drawing.Point(12, 206);
 			this.gamePathButton.Name = "gamePathButton";
-			this.gamePathButton.Size = new System.Drawing.Size(148, 23);
+			this.gamePathButton.Size = new System.Drawing.Size(165, 23);
 			this.gamePathButton.TabIndex = 29;
 			this.gamePathButton.Text = "Change Game Path";
 			this.gamePathButton.UseVisualStyleBackColor = false;
@@ -321,32 +319,11 @@
 			this.gamePathLabel.AutoSize = true;
 			this.gamePathLabel.Dock = System.Windows.Forms.DockStyle.Bottom;
 			this.gamePathLabel.ForeColor = System.Drawing.Color.White;
-			this.gamePathLabel.Location = new System.Drawing.Point(0, 281);
+			this.gamePathLabel.Location = new System.Drawing.Point(0, 267);
 			this.gamePathLabel.Name = "gamePathLabel";
 			this.gamePathLabel.Size = new System.Drawing.Size(76, 13);
 			this.gamePathLabel.TabIndex = 30;
 			this.gamePathLabel.Text = "Game path: ";
-			// 
-			// linuxShell
-			// 
-			this.linuxShell.Dock = System.Windows.Forms.DockStyle.Top;
-			this.linuxShell.Location = new System.Drawing.Point(10, 201);
-			this.linuxShell.Name = "linuxShell";
-			this.linuxShell.Size = new System.Drawing.Size(165, 20);
-			this.linuxShell.TabIndex = 31;
-			this.linuxShell.TextChanged += new System.EventHandler(this.LinuxShellChanged);
-			// 
-			// label4
-			// 
-			this.label4.AutoSize = true;
-			this.label4.Dock = System.Windows.Forms.DockStyle.Top;
-			this.label4.ForeColor = System.Drawing.Color.White;
-			this.label4.Location = new System.Drawing.Point(10, 178);
-			this.label4.Name = "label4";
-			this.label4.Padding = new System.Windows.Forms.Padding(0, 10, 0, 0);
-			this.label4.Size = new System.Drawing.Size(176, 23);
-			this.label4.TabIndex = 32;
-			this.label4.Text = "Terminal Program (Linux Only)";
 			// 
 			// splitContainer1
 			// 
@@ -356,10 +333,10 @@
 			// 
 			// splitContainer1.Panel1
 			// 
-			this.splitContainer1.Panel1.Controls.Add(this.linuxShell);
 			this.splitContainer1.Panel1.Controls.Add(this.label4);
 			this.splitContainer1.Panel1.Controls.Add(this.launchParameters);
 			this.splitContainer1.Panel1.Controls.Add(this.label14);
+			this.splitContainer1.Panel1.Controls.Add(this.gamePathButton);
 			this.splitContainer1.Panel1.Controls.Add(this.maxplayers);
 			this.splitContainer1.Panel1.Controls.Add(this.label2);
 			this.splitContainer1.Panel1.Controls.Add(this.label6);
@@ -372,7 +349,6 @@
 			// 
 			this.splitContainer1.Panel2.Controls.Add(this.exePathButton);
 			this.splitContainer1.Panel2.Controls.Add(this.label17);
-			this.splitContainer1.Panel2.Controls.Add(this.gamePathButton);
 			this.splitContainer1.Panel2.Controls.Add(this.label16);
 			this.splitContainer1.Panel2.Controls.Add(this.label15);
 			this.splitContainer1.Panel2.Controls.Add(this.label8);
@@ -385,7 +361,7 @@
 			this.splitContainer1.Panel2.Controls.Add(this.gameselect);
 			this.splitContainer1.Panel2.Controls.Add(this.label3);
 			this.splitContainer1.Panel2.Padding = new System.Windows.Forms.Padding(10, 10, 10, 0);
-			this.splitContainer1.Size = new System.Drawing.Size(357, 358);
+			this.splitContainer1.Size = new System.Drawing.Size(357, 344);
 			this.splitContainer1.SplitterDistance = 185;
 			this.splitContainer1.TabIndex = 34;
 			// 
@@ -393,7 +369,7 @@
 			// 
 			this.label17.Dock = System.Windows.Forms.DockStyle.Top;
 			this.label17.ForeColor = System.Drawing.Color.White;
-			this.label17.Location = new System.Drawing.Point(10, 224);
+			this.label17.Location = new System.Drawing.Point(10, 201);
 			this.label17.Name = "label17";
 			this.label17.Size = new System.Drawing.Size(148, 5);
 			this.label17.TabIndex = 36;
@@ -431,7 +407,7 @@
 			// 
 			this.label7.Dock = System.Windows.Forms.DockStyle.Bottom;
 			this.label7.ForeColor = System.Drawing.Color.White;
-			this.label7.Location = new System.Drawing.Point(0, 263);
+			this.label7.Location = new System.Drawing.Point(0, 249);
 			this.label7.Name = "label7";
 			this.label7.Size = new System.Drawing.Size(357, 5);
 			this.label7.TabIndex = 33;
@@ -440,10 +416,18 @@
 			// 
 			this.label18.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 			this.label18.Dock = System.Windows.Forms.DockStyle.Bottom;
-			this.label18.Location = new System.Drawing.Point(0, 262);
+			this.label18.Location = new System.Drawing.Point(0, 248);
 			this.label18.Name = "label18";
 			this.label18.Size = new System.Drawing.Size(357, 1);
 			this.label18.TabIndex = 34;
+			// 
+			// label4
+			// 
+			this.label4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+			this.label4.Location = new System.Drawing.Point(11, 187);
+			this.label4.Name = "label4";
+			this.label4.Size = new System.Drawing.Size(165, 1);
+			this.label4.TabIndex = 35;
 			// 
 			// MainForm
 			// 
@@ -452,7 +436,7 @@
 			this.AutoScroll = true;
 			this.AutoSize = true;
 			this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
-			this.ClientSize = new System.Drawing.Size(357, 358);
+			this.ClientSize = new System.Drawing.Size(357, 344);
 			this.Controls.Add(this.label18);
 			this.Controls.Add(this.label7);
 			this.Controls.Add(this.exePathLabel);
@@ -499,8 +483,6 @@
 		private System.Windows.Forms.Label label14;
 		private System.Windows.Forms.Button gamePathButton;
 		private System.Windows.Forms.Label gamePathLabel;
-        private System.Windows.Forms.TextBox linuxShell;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label16;
@@ -508,5 +490,6 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label18;
-    }
+		private System.Windows.Forms.Label label4;
+	}
 }

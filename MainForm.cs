@@ -30,7 +30,6 @@ namespace Universal_Srcds_Launcher
 			launchParameters.Text = Settings.LaunchParams;
 			exePathLabel.Text += Settings.ExeName;
 			gamePathLabel.Text += Settings.GamePath;
-			linuxShell.Text = Settings.LinuxShell;
 
 			mapselect.Enabled = !legacyCheck.Checked;
 			lancheck.Enabled = !legacyCheck.Checked;
@@ -93,6 +92,31 @@ namespace Universal_Srcds_Launcher
 					}
 				}
 			}
+		}
+
+		// Get launch command based on what terminals are installed
+		private string GetLinuxCmd()
+		{
+			string cmd = "";
+			var proc = new ProcessStartInfo
+			{
+				UseShellExecute = false,
+				RedirectStandardOutput = true,
+				FileName = "/bin/bash",
+				Arguments = "-c " + $"'{ Properties.Resources.ResourceManager.GetString( "GetLinuxCmd" ) }'"
+			};
+
+			try
+			{
+				var p = Process.Start( proc );
+				cmd = p.StandardOutput.ReadToEnd().Trim( '\n' ); // Trim newline from output so the command isn't messed up
+				p.WaitForExit();
+			}
+			catch ( Exception ex )
+			{
+				MessageBox.Show( "Failed to get terminal command. " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error );
+			}
+			return cmd;
 		}
 
 		// Called when the lan option is changed
@@ -184,12 +208,6 @@ namespace Universal_Srcds_Launcher
 			Properties.Settings.Default.LaunchParams = launchParameters.Text;
 		}
 
-		// Called when the linux terminal program value is changed
-		private void LinuxShellChanged( object sender, EventArgs e )
-		{
-			Properties.Settings.Default.LinuxShell = linuxShell.Text;
-		}
-
 		// Called when the steam token option is changed
 		private void TokenEnableChanged( object sender, EventArgs e )
 		{
@@ -243,7 +261,10 @@ namespace Universal_Srcds_Launcher
 			arguments += $" +maxplayers {maxplayers.Value} +map {mapselect.Text} {launchParameters.Text}";
 
 			if ( isLinux )
-				arguments = $"-c \"{linuxShell.Text} bash -c 'cd {Path.GetDirectoryName( Settings.GamePath )}; ./{Path.GetFileName( Settings.ExeName )} {arguments}; exec bash'\"";
+			{
+				string cmd = GetLinuxCmd();
+				arguments = $"-c \"{cmd} bash -c 'cd {Path.GetDirectoryName( Settings.GamePath )}; ./{Path.GetFileName( Settings.ExeName )} {arguments}; exec bash'\"";
+			}
 
 			var proc = new ProcessStartInfo
 			{
