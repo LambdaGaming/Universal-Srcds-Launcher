@@ -1,10 +1,10 @@
 # Universal Source Dedicated Server Launcher
- This is a replacement launcher compatible with any GoldSrc, Source, or Source 2 dedicated server that allows you to launch your servers with additional options, without having to use a command line or manually type out parameters for a shortcut. The launcher supports Windows 7 and newer, and should also work on any Linux distro with Mono installed, though only Linux Mint and Manjaro have been tested.
+ This is a replacement launcher compatible with any GoldSrc, Source, or Source 2 dedicated server that allows you to launch your servers with additional options, without having to use a command line or manually type out parameters for a shortcut. The launcher supports Windows 7 and newer, and should also work on any Linux distro with Mono installed.
 
 ![](https://raw.githubusercontent.com/LambdaGaming/GMod-Server-Launcher-Console/master/reference.PNG)
 ![](https://raw.githubusercontent.com/LambdaGaming/GMod-Server-Launcher-Console/master/reference2.png)
 
-# Features:
+# Features
 - Option to use legacy launcher. If this is enabled, most other options will be disabled since the legacy launcher will ignore them.
 - Map selection (`+map`)
   - Gets the names of maps inside the server's map folder. The map name can also be manually entered into the text box if the map is in a different location.
@@ -24,7 +24,7 @@
 - Linux terminal program name
   - If you're on Linux, you can have the server open in the terminal program of your choice by entering the terminal's command name followed by the parameter to execute the built-in command, as well as any other parameters you'd like
   - Examples: `gnome-terminal --`, `konsole -e`
-- All settings are saved when the program closes and will be automatically set when the program is reopened.
+- All settings are saved when the launcher closes and will be automatically restored when the launcher is opened again.
 
 # Notes
 - If you need this program to run more than one server, you can copy the exe and rename it to something else to generate a new config.
