@@ -2,7 +2,6 @@
  This is a replacement launcher compatible with any GoldSrc, Source, or Source 2 dedicated server that allows you to launch your servers with additional options, without having to use a command line or manually type out parameters for a shortcut. The launcher supports Windows 7 and newer, and should also work on any Linux distro with Mono installed.
 
 ![](https://raw.githubusercontent.com/LambdaGaming/GMod-Server-Launcher-Console/master/reference.PNG)
-![](https://raw.githubusercontent.com/LambdaGaming/GMod-Server-Launcher-Console/master/reference2.png)
 
 # Features
 - Option to use legacy launcher. If this is enabled, most other options will be disabled since the legacy launcher will ignore them.
@@ -19,9 +18,8 @@
   - Certain games including Garry's Mod and CS:GO require the server to be registered with Steam in this way for it to show up in the server browser
 - Steam workshop collection option (`+host_workshop_collection`)
 - Input for additional launch parameters
-- Linux terminal program name
-  - If you're on Linux, you can have the server open in the terminal program of your choice by entering the terminal's command name followed by the parameter to execute the built-in command, as well as any other parameters you'd like
-  - Examples: `gnome-terminal --`, `konsole -e`
+- Full Linux support
+  - The launcher will automatically scan for installed terminals and launch the server through one of them. Only a handful of terminals are currently supported, so if you want to use one that's unsupported please let me know.
 - All settings are saved when the launcher closes and will be automatically restored when the launcher is opened again.
 
 # Notes
