@@ -44,11 +44,13 @@
 			this.splitContainer1 = new System.Windows.Forms.SplitContainer();
 			this.label17 = new System.Windows.Forms.Label();
 			this.label16 = new System.Windows.Forms.Label();
-			this.label15 = new System.Windows.Forms.Label();
 			this.label8 = new System.Windows.Forms.Label();
 			this.label7 = new System.Windows.Forms.Label();
 			this.label18 = new System.Windows.Forms.Label();
+			this.label15 = new System.Windows.Forms.Label();
 			this.label4 = new System.Windows.Forms.Label();
+			this.label9 = new System.Windows.Forms.Label();
+			this.label10 = new System.Windows.Forms.Label();
 			((System.ComponentModel.ISupportInitialize)(this.maxplayers)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
 			this.splitContainer1.Panel1.SuspendLayout();
@@ -67,7 +69,7 @@
 			this.lancheck.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
 			this.lancheck.Name = "lancheck";
 			this.lancheck.Padding = new System.Windows.Forms.Padding(0, 0, 0, 10);
-			this.lancheck.Size = new System.Drawing.Size(165, 27);
+			this.lancheck.Size = new System.Drawing.Size(156, 27);
 			this.lancheck.TabIndex = 0;
 			this.lancheck.Text = "LAN Server";
 			this.lancheck.UseVisualStyleBackColor = true;
@@ -81,7 +83,7 @@
 			this.mapselect.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.mapselect.Location = new System.Drawing.Point(10, 67);
 			this.mapselect.Name = "mapselect";
-			this.mapselect.Size = new System.Drawing.Size(148, 21);
+			this.mapselect.Size = new System.Drawing.Size(157, 21);
 			this.mapselect.TabIndex = 2;
 			this.mapselect.SelectedIndexChanged += new System.EventHandler(this.MapChanged);
 			this.mapselect.TextChanged += new System.EventHandler(this.MapChanged);
@@ -106,7 +108,7 @@
 			this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
 			this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.button1.ForeColor = System.Drawing.Color.White;
-			this.button1.Location = new System.Drawing.Point(0, 280);
+			this.button1.Location = new System.Drawing.Point(0, 279);
 			this.button1.Name = "button1";
 			this.button1.Size = new System.Drawing.Size(357, 64);
 			this.button1.TabIndex = 4;
@@ -129,7 +131,7 @@
             0,
             0});
 			this.maxplayers.Name = "maxplayers";
-			this.maxplayers.Size = new System.Drawing.Size(165, 20);
+			this.maxplayers.Size = new System.Drawing.Size(156, 20);
 			this.maxplayers.TabIndex = 6;
 			this.maxplayers.Value = new decimal(new int[] {
             24,
@@ -162,7 +164,7 @@
 			this.legacyCheck.Margin = new System.Windows.Forms.Padding(3, 3, 3, 10);
 			this.legacyCheck.Name = "legacyCheck";
 			this.legacyCheck.Padding = new System.Windows.Forms.Padding(0, 0, 0, 10);
-			this.legacyCheck.Size = new System.Drawing.Size(165, 27);
+			this.legacyCheck.Size = new System.Drawing.Size(156, 27);
 			this.legacyCheck.TabIndex = 1;
 			this.legacyCheck.Text = "Use Legacy Launcher";
 			this.legacyCheck.UseVisualStyleBackColor = true;
@@ -174,7 +176,7 @@
 			this.gameselect.Dock = System.Windows.Forms.DockStyle.Top;
 			this.gameselect.Location = new System.Drawing.Point(10, 23);
 			this.gameselect.Name = "gameselect";
-			this.gameselect.Size = new System.Drawing.Size(148, 21);
+			this.gameselect.Size = new System.Drawing.Size(157, 21);
 			this.gameselect.TabIndex = 8;
 			this.gameselect.SelectedIndexChanged += new System.EventHandler(this.GamemodeChanged);
 			this.gameselect.TextChanged += new System.EventHandler(this.GamemodeChanged);
@@ -196,7 +198,7 @@
 			this.exePathLabel.AutoSize = true;
 			this.exePathLabel.Dock = System.Windows.Forms.DockStyle.Bottom;
 			this.exePathLabel.ForeColor = System.Drawing.Color.White;
-			this.exePathLabel.Location = new System.Drawing.Point(0, 254);
+			this.exePathLabel.Location = new System.Drawing.Point(0, 253);
 			this.exePathLabel.Name = "exePathLabel";
 			this.exePathLabel.Size = new System.Drawing.Size(65, 13);
 			this.exePathLabel.TabIndex = 10;
@@ -209,7 +211,7 @@
 			this.exePathButton.ForeColor = System.Drawing.Color.Black;
 			this.exePathButton.Location = new System.Drawing.Point(10, 206);
 			this.exePathButton.Name = "exePathButton";
-			this.exePathButton.Size = new System.Drawing.Size(148, 23);
+			this.exePathButton.Size = new System.Drawing.Size(157, 23);
 			this.exePathButton.TabIndex = 11;
 			this.exePathButton.Text = "Change Exe Path";
 			this.exePathButton.UseVisualStyleBackColor = false;
@@ -232,7 +234,7 @@
 			this.passwordBox.Dock = System.Windows.Forms.DockStyle.Top;
 			this.passwordBox.Location = new System.Drawing.Point(10, 111);
 			this.passwordBox.Name = "passwordBox";
-			this.passwordBox.Size = new System.Drawing.Size(148, 20);
+			this.passwordBox.Size = new System.Drawing.Size(157, 20);
 			this.passwordBox.TabIndex = 13;
 			this.passwordBox.TextChanged += new System.EventHandler(this.PasswordChanged);
 			// 
@@ -245,7 +247,7 @@
 			this.TokenEnable.Location = new System.Drawing.Point(10, 64);
 			this.TokenEnable.Name = "TokenEnable";
 			this.TokenEnable.Padding = new System.Windows.Forms.Padding(0, 0, 0, 10);
-			this.TokenEnable.Size = new System.Drawing.Size(165, 27);
+			this.TokenEnable.Size = new System.Drawing.Size(156, 27);
 			this.TokenEnable.TabIndex = 14;
 			this.TokenEnable.Text = "Enable Steam Token";
 			this.TokenEnable.UseVisualStyleBackColor = false;
@@ -257,7 +259,7 @@
 			this.label6.Dock = System.Windows.Forms.DockStyle.Top;
 			this.label6.Location = new System.Drawing.Point(10, 91);
 			this.label6.Name = "label6";
-			this.label6.Size = new System.Drawing.Size(165, 1);
+			this.label6.Size = new System.Drawing.Size(156, 1);
 			this.label6.TabIndex = 17;
 			// 
 			// CollectionIDBox
@@ -265,7 +267,7 @@
 			this.CollectionIDBox.Dock = System.Windows.Forms.DockStyle.Top;
 			this.CollectionIDBox.Location = new System.Drawing.Point(10, 154);
 			this.CollectionIDBox.Name = "CollectionIDBox";
-			this.CollectionIDBox.Size = new System.Drawing.Size(148, 20);
+			this.CollectionIDBox.Size = new System.Drawing.Size(157, 20);
 			this.CollectionIDBox.TabIndex = 24;
 			this.CollectionIDBox.TextChanged += new System.EventHandler(this.CollectionIDBoxChanged);
 			// 
@@ -286,7 +288,7 @@
 			this.launchParameters.Dock = System.Windows.Forms.DockStyle.Top;
 			this.launchParameters.Location = new System.Drawing.Point(10, 158);
 			this.launchParameters.Name = "launchParameters";
-			this.launchParameters.Size = new System.Drawing.Size(165, 20);
+			this.launchParameters.Size = new System.Drawing.Size(156, 20);
 			this.launchParameters.TabIndex = 27;
 			this.launchParameters.TextChanged += new System.EventHandler(this.LaunchParamsChanged);
 			// 
@@ -305,10 +307,11 @@
 			// gamePathButton
 			// 
 			this.gamePathButton.BackColor = System.Drawing.Color.White;
+			this.gamePathButton.Dock = System.Windows.Forms.DockStyle.Top;
 			this.gamePathButton.ForeColor = System.Drawing.Color.Black;
-			this.gamePathButton.Location = new System.Drawing.Point(12, 206);
+			this.gamePathButton.Location = new System.Drawing.Point(10, 206);
 			this.gamePathButton.Name = "gamePathButton";
-			this.gamePathButton.Size = new System.Drawing.Size(165, 23);
+			this.gamePathButton.Size = new System.Drawing.Size(156, 23);
 			this.gamePathButton.TabIndex = 29;
 			this.gamePathButton.Text = "Change Game Path";
 			this.gamePathButton.UseVisualStyleBackColor = false;
@@ -319,7 +322,7 @@
 			this.gamePathLabel.AutoSize = true;
 			this.gamePathLabel.Dock = System.Windows.Forms.DockStyle.Bottom;
 			this.gamePathLabel.ForeColor = System.Drawing.Color.White;
-			this.gamePathLabel.Location = new System.Drawing.Point(0, 267);
+			this.gamePathLabel.Location = new System.Drawing.Point(0, 266);
 			this.gamePathLabel.Name = "gamePathLabel";
 			this.gamePathLabel.Size = new System.Drawing.Size(76, 13);
 			this.gamePathLabel.TabIndex = 30;
@@ -333,10 +336,12 @@
 			// 
 			// splitContainer1.Panel1
 			// 
+			this.splitContainer1.Panel1.Controls.Add(this.gamePathButton);
+			this.splitContainer1.Panel1.Controls.Add(this.label10);
+			this.splitContainer1.Panel1.Controls.Add(this.label9);
 			this.splitContainer1.Panel1.Controls.Add(this.label4);
 			this.splitContainer1.Panel1.Controls.Add(this.launchParameters);
 			this.splitContainer1.Panel1.Controls.Add(this.label14);
-			this.splitContainer1.Panel1.Controls.Add(this.gamePathButton);
 			this.splitContainer1.Panel1.Controls.Add(this.maxplayers);
 			this.splitContainer1.Panel1.Controls.Add(this.label2);
 			this.splitContainer1.Panel1.Controls.Add(this.label6);
@@ -361,8 +366,8 @@
 			this.splitContainer1.Panel2.Controls.Add(this.gameselect);
 			this.splitContainer1.Panel2.Controls.Add(this.label3);
 			this.splitContainer1.Panel2.Padding = new System.Windows.Forms.Padding(10, 10, 10, 0);
-			this.splitContainer1.Size = new System.Drawing.Size(357, 344);
-			this.splitContainer1.SplitterDistance = 185;
+			this.splitContainer1.Size = new System.Drawing.Size(357, 343);
+			this.splitContainer1.SplitterDistance = 176;
 			this.splitContainer1.TabIndex = 34;
 			// 
 			// label17
@@ -371,7 +376,7 @@
 			this.label17.ForeColor = System.Drawing.Color.White;
 			this.label17.Location = new System.Drawing.Point(10, 201);
 			this.label17.Name = "label17";
-			this.label17.Size = new System.Drawing.Size(148, 5);
+			this.label17.Size = new System.Drawing.Size(157, 5);
 			this.label17.TabIndex = 36;
 			// 
 			// label16
@@ -383,15 +388,6 @@
 			this.label16.Name = "label16";
 			this.label16.Size = new System.Drawing.Size(0, 13);
 			this.label16.TabIndex = 35;
-			// 
-			// label15
-			// 
-			this.label15.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-			this.label15.Dock = System.Windows.Forms.DockStyle.Top;
-			this.label15.Location = new System.Drawing.Point(10, 187);
-			this.label15.Name = "label15";
-			this.label15.Size = new System.Drawing.Size(148, 1);
-			this.label15.TabIndex = 34;
 			// 
 			// label8
 			// 
@@ -407,7 +403,7 @@
 			// 
 			this.label7.Dock = System.Windows.Forms.DockStyle.Bottom;
 			this.label7.ForeColor = System.Drawing.Color.White;
-			this.label7.Location = new System.Drawing.Point(0, 249);
+			this.label7.Location = new System.Drawing.Point(0, 248);
 			this.label7.Name = "label7";
 			this.label7.Size = new System.Drawing.Size(357, 5);
 			this.label7.TabIndex = 33;
@@ -416,18 +412,48 @@
 			// 
 			this.label18.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 			this.label18.Dock = System.Windows.Forms.DockStyle.Bottom;
-			this.label18.Location = new System.Drawing.Point(0, 248);
+			this.label18.Location = new System.Drawing.Point(0, 247);
 			this.label18.Name = "label18";
 			this.label18.Size = new System.Drawing.Size(357, 1);
 			this.label18.TabIndex = 34;
 			// 
+			// label15
+			// 
+			this.label15.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+			this.label15.Dock = System.Windows.Forms.DockStyle.Top;
+			this.label15.Location = new System.Drawing.Point(10, 187);
+			this.label15.Margin = new System.Windows.Forms.Padding(0);
+			this.label15.Name = "label15";
+			this.label15.Size = new System.Drawing.Size(157, 1);
+			this.label15.TabIndex = 34;
+			// 
 			// label4
 			// 
-			this.label4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-			this.label4.Location = new System.Drawing.Point(11, 187);
+			this.label4.Dock = System.Windows.Forms.DockStyle.Top;
+			this.label4.ForeColor = System.Drawing.Color.White;
+			this.label4.Location = new System.Drawing.Point(10, 178);
 			this.label4.Name = "label4";
-			this.label4.Size = new System.Drawing.Size(165, 1);
-			this.label4.TabIndex = 35;
+			this.label4.Size = new System.Drawing.Size(156, 10);
+			this.label4.TabIndex = 38;
+			// 
+			// label9
+			// 
+			this.label9.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+			this.label9.Dock = System.Windows.Forms.DockStyle.Top;
+			this.label9.Location = new System.Drawing.Point(10, 188);
+			this.label9.Margin = new System.Windows.Forms.Padding(0);
+			this.label9.Name = "label9";
+			this.label9.Size = new System.Drawing.Size(156, 1);
+			this.label9.TabIndex = 37;
+			// 
+			// label10
+			// 
+			this.label10.Dock = System.Windows.Forms.DockStyle.Top;
+			this.label10.ForeColor = System.Drawing.Color.White;
+			this.label10.Location = new System.Drawing.Point(10, 189);
+			this.label10.Name = "label10";
+			this.label10.Size = new System.Drawing.Size(156, 17);
+			this.label10.TabIndex = 39;
 			// 
 			// MainForm
 			// 
@@ -436,7 +462,7 @@
 			this.AutoScroll = true;
 			this.AutoSize = true;
 			this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
-			this.ClientSize = new System.Drawing.Size(357, 344);
+			this.ClientSize = new System.Drawing.Size(357, 343);
 			this.Controls.Add(this.label18);
 			this.Controls.Add(this.label7);
 			this.Controls.Add(this.exePathLabel);
@@ -486,10 +512,12 @@
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label18;
 		private System.Windows.Forms.Label label4;
+		private System.Windows.Forms.Label label9;
+		private System.Windows.Forms.Label label15;
+		private System.Windows.Forms.Label label10;
 	}
 }

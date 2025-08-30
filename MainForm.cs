@@ -103,7 +103,7 @@ namespace Universal_Srcds_Launcher
 				UseShellExecute = false,
 				RedirectStandardOutput = true,
 				FileName = "/bin/bash",
-				Arguments = "-c " + $"'{ Properties.Resources.ResourceManager.GetString( "GetLinuxCmd" ) }'"
+				Arguments = $"-c '{ Properties.Resources.ResourceManager.GetString( "GetLinuxCmd" ) }'"
 			};
 
 			try
