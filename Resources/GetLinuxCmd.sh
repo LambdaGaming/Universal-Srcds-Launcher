@@ -10,7 +10,7 @@ cmd=""
 if IsInstalled konsole; then
 	cmd="konsole -e"
 elif IsInstalled gnome-terminal; then
-	cmd="gnome-terminal -e"
+	cmd="gnome-terminal --"
 elif IsInstalled terminator; then
 	cmd="terminator -e"
 elif IsInstalled xterm; then
