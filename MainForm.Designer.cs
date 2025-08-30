@@ -42,15 +42,15 @@
 			this.gamePathButton = new System.Windows.Forms.Button();
 			this.gamePathLabel = new System.Windows.Forms.Label();
 			this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+			this.label10 = new System.Windows.Forms.Label();
+			this.label9 = new System.Windows.Forms.Label();
+			this.label4 = new System.Windows.Forms.Label();
 			this.label17 = new System.Windows.Forms.Label();
 			this.label16 = new System.Windows.Forms.Label();
+			this.label15 = new System.Windows.Forms.Label();
 			this.label8 = new System.Windows.Forms.Label();
 			this.label7 = new System.Windows.Forms.Label();
 			this.label18 = new System.Windows.Forms.Label();
-			this.label15 = new System.Windows.Forms.Label();
-			this.label4 = new System.Windows.Forms.Label();
-			this.label9 = new System.Windows.Forms.Label();
-			this.label10 = new System.Windows.Forms.Label();
 			((System.ComponentModel.ISupportInitialize)(this.maxplayers)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
 			this.splitContainer1.Panel1.SuspendLayout();
@@ -370,6 +370,34 @@
 			this.splitContainer1.SplitterDistance = 176;
 			this.splitContainer1.TabIndex = 34;
 			// 
+			// label10
+			// 
+			this.label10.Dock = System.Windows.Forms.DockStyle.Top;
+			this.label10.ForeColor = System.Drawing.Color.White;
+			this.label10.Location = new System.Drawing.Point(10, 189);
+			this.label10.Name = "label10";
+			this.label10.Size = new System.Drawing.Size(156, 17);
+			this.label10.TabIndex = 39;
+			// 
+			// label9
+			// 
+			this.label9.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+			this.label9.Dock = System.Windows.Forms.DockStyle.Top;
+			this.label9.Location = new System.Drawing.Point(10, 188);
+			this.label9.Margin = new System.Windows.Forms.Padding(0);
+			this.label9.Name = "label9";
+			this.label9.Size = new System.Drawing.Size(156, 1);
+			this.label9.TabIndex = 37;
+			// 
+			// label4
+			// 
+			this.label4.Dock = System.Windows.Forms.DockStyle.Top;
+			this.label4.ForeColor = System.Drawing.Color.White;
+			this.label4.Location = new System.Drawing.Point(10, 178);
+			this.label4.Name = "label4";
+			this.label4.Size = new System.Drawing.Size(156, 10);
+			this.label4.TabIndex = 38;
+			// 
 			// label17
 			// 
 			this.label17.Dock = System.Windows.Forms.DockStyle.Top;
@@ -388,6 +416,16 @@
 			this.label16.Name = "label16";
 			this.label16.Size = new System.Drawing.Size(0, 13);
 			this.label16.TabIndex = 35;
+			// 
+			// label15
+			// 
+			this.label15.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+			this.label15.Dock = System.Windows.Forms.DockStyle.Top;
+			this.label15.Location = new System.Drawing.Point(10, 187);
+			this.label15.Margin = new System.Windows.Forms.Padding(0);
+			this.label15.Name = "label15";
+			this.label15.Size = new System.Drawing.Size(157, 1);
+			this.label15.TabIndex = 34;
 			// 
 			// label8
 			// 
@@ -416,44 +454,6 @@
 			this.label18.Name = "label18";
 			this.label18.Size = new System.Drawing.Size(357, 1);
 			this.label18.TabIndex = 34;
-			// 
-			// label15
-			// 
-			this.label15.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-			this.label15.Dock = System.Windows.Forms.DockStyle.Top;
-			this.label15.Location = new System.Drawing.Point(10, 187);
-			this.label15.Margin = new System.Windows.Forms.Padding(0);
-			this.label15.Name = "label15";
-			this.label15.Size = new System.Drawing.Size(157, 1);
-			this.label15.TabIndex = 34;
-			// 
-			// label4
-			// 
-			this.label4.Dock = System.Windows.Forms.DockStyle.Top;
-			this.label4.ForeColor = System.Drawing.Color.White;
-			this.label4.Location = new System.Drawing.Point(10, 178);
-			this.label4.Name = "label4";
-			this.label4.Size = new System.Drawing.Size(156, 10);
-			this.label4.TabIndex = 38;
-			// 
-			// label9
-			// 
-			this.label9.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-			this.label9.Dock = System.Windows.Forms.DockStyle.Top;
-			this.label9.Location = new System.Drawing.Point(10, 188);
-			this.label9.Margin = new System.Windows.Forms.Padding(0);
-			this.label9.Name = "label9";
-			this.label9.Size = new System.Drawing.Size(156, 1);
-			this.label9.TabIndex = 37;
-			// 
-			// label10
-			// 
-			this.label10.Dock = System.Windows.Forms.DockStyle.Top;
-			this.label10.ForeColor = System.Drawing.Color.White;
-			this.label10.Location = new System.Drawing.Point(10, 189);
-			this.label10.Name = "label10";
-			this.label10.Size = new System.Drawing.Size(156, 17);
-			this.label10.TabIndex = 39;
 			// 
 			// MainForm
 			// 

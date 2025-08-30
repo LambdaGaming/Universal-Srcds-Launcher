@@ -40,6 +40,7 @@ namespace Universal_Srcds_Launcher
 			launchParameters.Enabled = !legacyCheck.Checked;
 
 			UpdateLists();
+			Text = "Universal SRCDS Launcher v2.3.0";
 		}
 
 		// Update gamemode and map lists when the game path changes
