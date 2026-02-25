@@ -25,6 +25,3 @@
 # Notes
 - If you need this program to run more than one server, you can copy the exe and rename it to something else to generate a new config.
 - If you get a permission denied error when trying to start a server on Linux, make sure the srcds_run file(s) have execute permissions.
-
-# Issues & Pull Requests
- If you would like to contribute to this repository by creating an issue or pull request, please refer to the [contributing guidelines.](https://lambdagaming.github.io/contributing.html)
