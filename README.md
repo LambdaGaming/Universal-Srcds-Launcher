@@ -1,5 +1,5 @@
-# Universal Source Dedicated Server Launcher
- This is a replacement launcher compatible with any GoldSrc, Source, or Source 2 dedicated server that allows you to launch your servers with additional options, without having to use a command line or manually type out parameters for a shortcut. The launcher supports Windows 7 and newer, and should also work on any Linux distro with Mono installed.
+# Universal SRCDS Launcher
+ This is designed to replace the default launcher for GoldSrc, Source, or Source 2 dedicated servers. The launcher supports Windows 7 and newer, and should also work on any Linux distro with Mono installed.
 
 ![](https://raw.githubusercontent.com/LambdaGaming/GMod-Server-Launcher-Console/master/reference.PNG)
 
@@ -23,5 +23,5 @@
 - All settings are saved when the launcher closes and will be automatically restored when the launcher is opened again.
 
 # Notes
-- If you need this program to run more than one server, you can copy the exe and rename it to something else to generate a new config.
+- If you need the launcher to run more than one server, you can copy the exe to a different location to generate a new config.
 - If you get a permission denied error when trying to start a server on Linux, make sure the srcds_run file(s) have execute permissions.

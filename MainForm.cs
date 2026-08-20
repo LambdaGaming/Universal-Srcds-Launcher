@@ -8,7 +8,12 @@ namespace Universal_Srcds_Launcher
 {
 	public partial class MainForm : Form
 	{
-		private bool IsGmodOrSbox = false;
+		private enum GameType {
+			None,
+			GarrysMod,
+			Sbox
+		}
+		private GameType SpecialGameType = GameType.None;
 
 		public MainForm()
 		{
@@ -40,7 +45,7 @@ namespace Universal_Srcds_Launcher
 			launchParameters.Enabled = !legacyCheck.Checked;
 
 			UpdateLists();
-			Text = "Universal SRCDS Launcher v2.3.0";
+			Text = "Universal SRCDS Launcher v2.4.0";
 		}
 
 		// Update gamemode and map lists when the game path changes
@@ -60,16 +65,17 @@ namespace Universal_Srcds_Launcher
 						gameselect.Items.Add( foldername );
 					}
 				}
-				IsGmodOrSbox = true;
+				SpecialGameType = GameType.GarrysMod;
 			}
 			else if ( Path.GetFileName( Settings.ExePath ) == "sbox-server.exe" )
 			{
-				// Insert placeholder for s&box
+				// Insert placeholders for s&box
 				if ( string.IsNullOrWhiteSpace( gameselect.Text ) )
 				{
 					gameselect.Text = "facepunch.sandbox";
+					mapselect.Text = "facepunch.flatgrass";
 				}
-				IsGmodOrSbox = true;
+				SpecialGameType = GameType.Sbox;
 			}
 			else
 			{
@@ -77,7 +83,6 @@ namespace Universal_Srcds_Launcher
 				{
 					gameselect.Text = Path.GetFileName( Settings.GamePath );
 				}
-				IsGmodOrSbox = false;
 			}
 
 			if ( Directory.Exists( Settings.GamePath + "/maps" ) )
@@ -248,10 +253,15 @@ namespace Universal_Srcds_Launcher
 				arguments += $" +sv_setsteamaccount {Token}";
 			}
 
-			if ( IsGmodOrSbox )
+			if ( SpecialGameType == GameType.GarrysMod )
 				arguments += $" +gamemode {gameselect.Text}";
+			else if ( SpecialGameType == GameType.Sbox )
+				arguments += $" +game {gameselect.Text} {mapselect.Text}";
 			else
 				arguments += $" -game {gameselect.Text}";
+
+			if ( SpecialGameType != GameType.Sbox )
+				arguments += $"+map {mapselect.Text}";
 
 			if ( !string.IsNullOrWhiteSpace( passwordBox.Text ) )
 				arguments += $" +sv_password {passwordBox.Text}";
@@ -259,7 +269,7 @@ namespace Universal_Srcds_Launcher
 			if ( !string.IsNullOrWhiteSpace( CollectionIDBox.Text ) )
 				arguments += $" +host_workshop_collection {CollectionIDBox.Text}";
 
-			arguments += $" +maxplayers {maxplayers.Value} +map {mapselect.Text} {launchParameters.Text}";
+			arguments += $" +maxplayers {maxplayers.Value} {launchParameters.Text}";
 
 			if ( isLinux )
 			{
