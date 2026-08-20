@@ -261,7 +261,7 @@ namespace Universal_Srcds_Launcher
 				arguments += $" -game {gameselect.Text}";
 
 			if ( SpecialGameType != GameType.Sbox )
-				arguments += $"+map {mapselect.Text}";
+				arguments += $" +map {mapselect.Text}";
 
 			if ( !string.IsNullOrWhiteSpace( passwordBox.Text ) )
 				arguments += $" +sv_password {passwordBox.Text}";
