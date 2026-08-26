@@ -25,3 +25,6 @@
 # Notes
 - If you need the launcher to run more than one server, you can copy the exe to a different location to generate a new config.
 - If you get a permission denied error when trying to start a server on Linux, make sure the srcds_run file(s) have execute permissions.
+
+# Contributing
+ Contributions are welcome! Please read through the [guidelines](https://lambdagaming.github.io/guides/contributing) before submitting an issue or pull request.
