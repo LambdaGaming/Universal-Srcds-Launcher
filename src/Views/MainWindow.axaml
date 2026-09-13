@@ -1,0 +1,53 @@
+<Window xmlns="https://github.com/avaloniaui"
+		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		xmlns:vm="using:UniversalSrcdsLauncher.ViewModels"
+		xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+		xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+		mc:Ignorable="d" d:DesignWidth="350" d:DesignHeight="400"
+		x:Class="UniversalSrcdsLauncher.Views.MainWindow"
+		x:DataType="vm:MainViewModel"
+		Icon="/Assets/logo.ico"
+		Title="Universal SRCDS Launcher v3.0"
+		SizeToContent="WidthAndHeight"
+		CanResize="False">
+
+	<Design.DataContext>
+		<vm:MainViewModel />
+	</Design.DataContext>
+
+	<Grid HorizontalAlignment="Center" VerticalAlignment="Top" RowSpacing="20" ColumnSpacing="30" Margin="10" RowDefinitions="Auto, Auto, Auto, Auto" ColumnDefinitions="Auto, Auto">
+		<StackPanel Grid.Row="0" Grid.Column="0">
+			<CheckBox IsChecked="{Binding LanServer}" Content="LAN Server"></CheckBox>
+			<CheckBox IsChecked="{Binding EnableToken}" Content="Enable Steam Token"></CheckBox>
+			<TextBlock Margin="0 10 0 5">Max Players</TextBlock>
+			<NumericUpDown Minimum="1" Maximum="100" Value="{Binding MaxPlayers}"/>
+			<TextBlock Margin="0 10 0 5">Workshop Collection ID</TextBlock>
+			<TextBox Text="{Binding WorkshopId}"/>
+		</StackPanel>
+		<StackPanel Grid.Row="0" Grid.Column="1">
+			<TextBlock Margin="0 0 0 5">Game / Gamemode</TextBlock>
+			<ComboBox ItemsSource="{Binding GameListItems}" Text="{Binding SelectedGame}" Width="175" MaxWidth="175" IsEditable="True" PlaceholderText="Select a game"/>
+			<TextBlock Margin="0 15 0 5">Map</TextBlock>
+			<ComboBox ItemsSource="{Binding MapListItems}" Text="{Binding SelectedMap}" Width="175" MaxWidth="175" IsEditable="True" PlaceholderText="Select a map"/>
+			<TextBlock Margin="0 14 0 5">Password</TextBlock>
+			<TextBox Text="{Binding Password}"/>
+		</StackPanel>
+		<StackPanel Grid.Row="1" Grid.Column="0">
+			<ComboBox ItemsSource="{Binding ExeListItems}" Text="{Binding SelectedExe}" Width="175" MaxWidth="175" IsEditable="True" PlaceholderText="Select exe"/>
+		</StackPanel>
+		<StackPanel Grid.Row="1" Grid.Column="1">
+			<Button Content="Change Path" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" Height="33" Command="{Binding ChangePathCommand}"/>
+		</StackPanel>
+		<StackPanel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2">
+			<TextBlock Margin="0 0 0 5">Launch Parameters</TextBlock>
+			<TextBox Text="{Binding LaunchParams}" MaxWidth="380"/>
+			<TextBlock Margin="0 10 0 0" TextWrapping="Wrap" MaxWidth="380">
+				<Run Text="Path: "/>
+				<Run Text="{Binding ServerPath}"/>
+			</TextBlock>
+		</StackPanel>
+		<StackPanel Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" Margin="80 0 80 0">
+			<Button FontSize="28" FontWeight="Bold" LetterSpacing="1" HorizontalContentAlignment="Center" Content="START" HorizontalAlignment="Stretch" Command="{Binding StartCommand}"/>
+		</StackPanel>
+	</Grid>
+</Window>

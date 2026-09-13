@@ -6,14 +6,14 @@ IsInstalled()
 	return 1
 }
 
-cmd=""
+cmd=''
 if IsInstalled konsole; then
-	cmd="konsole -e"
+	cmd='konsole -e'
 elif IsInstalled gnome-terminal; then
-	cmd="gnome-terminal --"
+	cmd='gnome-terminal --'
 elif IsInstalled terminator; then
-	cmd="terminator -e"
+	cmd='terminator -e'
 elif IsInstalled xterm; then
-	cmd="xterm -e"
+	cmd='xterm -e'
 fi
-echo "$cmd"
+echo $cmd
