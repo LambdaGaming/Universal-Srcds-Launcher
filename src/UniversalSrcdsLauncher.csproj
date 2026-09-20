@@ -4,11 +4,16 @@
 		<TargetFramework>net10.0</TargetFramework>
 		<Nullable>enable</Nullable>
 		<ApplicationManifest>app.manifest</ApplicationManifest>
+		<PublishAot>true</PublishAot>
+		<IsAotCompatible>true</IsAotCompatible>
+		<JsonSerializerIsReflectionEnabledByDefault>true</JsonSerializerIsReflectionEnabledByDefault>
 	</PropertyGroup>
 
 	<ItemGroup>
 		<Folder Include="Models\" />
 		<AvaloniaResource Include="Assets\**" />
+		<ProjectReference Include="..\UniversalSrcdsLauncher\UniversalSrcdsLauncher.csproj" />
+		<TrimmerRootAssembly Include="UniversalSrcdsLauncher" />
 	</ItemGroup>
 
 	<ItemGroup>

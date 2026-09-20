@@ -1,5 +1,5 @@
 # Universal SRCDS Launcher
- This is designed to replace the default launcher for GoldSrc, Source, or Source 2 dedicated servers. The launcher supports Windows 10/11 and most Linux distros. The .NET 10 runtime is required for both platforms. If you're looking for the older version based on WinForms and .NET Framework 4.8, [click here](https://github.com/LambdaGaming/Universal-Srcds-Launcher/releases/tag/v2.4).
+ This is designed to replace the default launcher for GoldSrc, Source, or Source 2 dedicated servers. The launcher supports Windows 10/11 and most Linux distros. No additional dependencies are required for either platform. If you're looking for the older version based on WinForms and .NET Framework 4.8, [click here](https://github.com/LambdaGaming/Universal-Srcds-Launcher/releases/tag/v2.4).
 
 ![](reference.png)
 
@@ -26,6 +26,9 @@
 # Notes
 - If you need the launcher to run more than one server, you can create a shortcut to the launcher and pass any name as a launch parameter to generate a new config under that name. Configs are saved in `~/.local/share/Universal-Srcds-Launcher` on Linux, and `%localappdata%\Universal-Srcds-Launcher` on Windows.
 - If you get a permission denied error when trying to start a server on Linux, make sure the srcds_run file(s) have execute permissions.
+
+# Building
+ All you need is the .NET 10 SDK, then you can run `publish_linux.sh` or `publish_windows.bat` depending on your OS. VSCode with the C# Dev Tools extension is recommended but not required.
 
 # Contributing
  Contributions are welcome! Please read through the [guidelines](https://lambdagaming.github.io/guides/contributing) before submitting an issue or pull request.

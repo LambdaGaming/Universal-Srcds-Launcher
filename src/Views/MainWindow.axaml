@@ -6,8 +6,9 @@
 		mc:Ignorable="d" d:DesignWidth="350" d:DesignHeight="400"
 		x:Class="UniversalSrcdsLauncher.Views.MainWindow"
 		x:DataType="vm:MainViewModel"
+		x:CompileBindings="True"
 		Icon="/Assets/logo.ico"
-		Title="Universal SRCDS Launcher v3.0"
+		Title="Universal SRCDS Launcher v3.1"
 		SizeToContent="WidthAndHeight"
 		CanResize="False">
 
