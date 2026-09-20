@@ -79,7 +79,7 @@ public partial class MainViewModel : ObservableObject
 	[ObservableProperty]
 	public string? _tokenPath;
 
-	public async Task GetServerPath()
+	public async Task GetServerPath( bool reset = false )
 	{
 		if ( Application.Current?.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime life )
 		{
@@ -89,8 +89,8 @@ public partial class MainViewModel : ObservableObject
 			} );
 			if ( dir.Count > 0 )
 			{
-				ServerPath = dir[0].Path.AbsolutePath;
-				UpdateLists();
+				ServerPath = dir[0].Path.LocalPath;
+				UpdateLists( reset );
 			}
 			else
 			{
@@ -109,14 +109,25 @@ public partial class MainViewModel : ObservableObject
 				AllowMultiple = false
 			} );
 			if ( file.Count > 0 )
-				TokenPath = file[0].Path.AbsolutePath;
+				TokenPath = file[0].Path.LocalPath;
 			else
 				EnableToken = false;
 		}
 	}
 
-	internal void UpdateLists()
+	internal void UpdateLists( bool reset = false )
 	{
+		// Reset the lists if the path has changed
+		if ( reset )
+		{
+			GameListItems.Clear();
+			MapListItems.Clear();
+			ExeListItems.Clear();
+			SelectedGame = "";
+			SelectedMap = "";
+			SelectedExe = "";
+		}
+
 		if ( Directory.Exists( ServerPath + "/gamemodes" ) )
 		{
 			var gamemodes = Directory.GetDirectories( ServerPath + "/gamemodes" );
@@ -139,9 +150,9 @@ public partial class MainViewModel : ObservableObject
 			}
 			SpecialGameType = GameType.Sbox;
 		}
-		else if ( string.IsNullOrWhiteSpace( SelectedGame ) )
+		else
 		{
-			SelectedGame = Path.GetFileName( ServerPath );
+			GameListItems.Add( Path.GetFileName( ServerPath?.TrimEnd( Path.DirectorySeparatorChar ) ) ?? "Error" );
 		}
 
 		if ( Directory.Exists( ServerPath + "/maps" ) )
@@ -151,7 +162,7 @@ public partial class MainViewModel : ObservableObject
 			{
 				var ext = Path.GetExtension( map );
 				var name = Path.GetFileNameWithoutExtension( map );
-				if ( ext == ".bsp" )
+				if ( ext == ".bsp" || ext == ".vpk" )
 					MapListItems.Add( name );
 			}
 		}
@@ -160,7 +171,7 @@ public partial class MainViewModel : ObservableObject
 		foreach ( string file in files )
 		{
 			var name = Path.GetFileName( file );
-			if ( name.Contains( ".exe" ) || name.Contains( "srcds_" ) )
+			if ( name.Contains( ".exe" ) || name.Contains( "_run" ) || name.Contains( ".sh" ) )
 				ExeListItems.Add( name );
 		}
 	}
@@ -267,7 +278,7 @@ public partial class MainViewModel : ObservableObject
 	[RelayCommand]
 	private void ChangePath()
 	{
-		_ = GetServerPath();
+		_ = GetServerPath( true );
 	}
 
 	[RelayCommand]
